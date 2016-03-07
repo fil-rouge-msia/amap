@@ -6,6 +6,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var exec = require('child_process').exec;
 var concat = require('gulp-concat');
+var mainBowerFiles = require('main-bower-files');
+var uglify = require('gulp-uglify');
 
 gulp.task('default', ['sass', 'scripts', 'watch'], function() {
 
@@ -47,7 +49,10 @@ gulp.task('watch', function() {
 
 //Concatène les fichiers javascript
 gulp.task('scripts', function() {
-  return gulp.src('./app/Resources/assets/vendor/angular/angular.min.js')
-    .pipe(concat('all.js'))
+  return gulp.src(mainBowerFiles({
+    filter: new RegExp('.+\.js')
+  }))
+    .pipe(concat('vendor.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('./web/scripts'));
 });
