@@ -18,9 +18,7 @@
         </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {% javascripts 'js/angular/angular.min.js' %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            <script src="scripts/all.js"></script>
         {% endblock %}
     </body>
 </html>

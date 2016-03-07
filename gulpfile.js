@@ -5,8 +5,9 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var exec = require('child_process').exec;
+var concat = require('gulp-concat');
 
-gulp.task('default', ['sass'], function() {
+gulp.task('default', ['sass', 'scripts', 'watch'], function() {
 
 });
 
@@ -20,7 +21,8 @@ gulp.task('serve', function() {
 //Lance le rafraichissement automatique du navigateur
 gulp.task('browserSync', ['serve'], function() {
   browserSync.init([
-  	'app/Resources/assets'
+  	'app/Resources/assets',
+    'app/Resources/views'
   ], {
   	proxy: '127.0.0.1:8000'
   });
@@ -39,6 +41,13 @@ gulp.task('sass', ['browserSync'], function() {
 });
 
 //Relance automatiquement la compilation si un fichier sass est modifié
-gulp.task('sass:watch', function() {
+gulp.task('watch', function() {
   gulp.watch('./app/Resources/assets/sass/*.scss', ['sass']);
+});
+
+//Concatène les fichiers javascript
+gulp.task('scripts', function() {
+  return gulp.src('./app/Resources/assets/vendor/angular/angular.min.js')
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./web/scripts'));
 });
