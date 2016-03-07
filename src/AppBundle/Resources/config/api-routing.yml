@@ -1,0 +1,3 @@
+amap:
+    type: rest
+    resource: "@AppBundle/Controller/AmapsController.php"
