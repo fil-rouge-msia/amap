@@ -9,6 +9,7 @@ use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AmapsController extends FOSRestController
@@ -43,7 +44,7 @@ class AmapsController extends FOSRestController
     public function deleteAmapAction(Amap $amap)
     {
         if (!$amap)
-            throw $this->createNotFoundException('Aucun amap avec cet identifiant');
+            throw $this->createNotFoundException('Aucune amap avec cet identifiant');
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($amap);
@@ -65,9 +66,8 @@ class AmapsController extends FOSRestController
                     ->find($id);
 
         //Si rien de trouvé on retourne une erreur
-        if (!$amap) {
-            throw new HttpException(400, "Aucune amap avec cet identifiant");
-        }
+        if (!$amap)
+            throw $this->createNotFoundException('Aucun amap avec cet identifiant');
 
         return $this->processForm($request, $amap);
     }
@@ -93,7 +93,7 @@ class AmapsController extends FOSRestController
             $em->persist($amap);
             $em->flush();
 
-            $response = new Response();
+            $response = new JsonResponse();
             $response->setStatusCode($status);
 
             $response->headers->set('Location',
