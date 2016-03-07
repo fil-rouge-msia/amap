@@ -9,6 +9,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AMAP</a>
+                </div>
+            </div>
+        </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
             {% javascripts 'js/angular/angular.min.js' %}
