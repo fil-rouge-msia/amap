@@ -45,7 +45,7 @@ class AmapsController extends FOSRestController
         if (!$amap)
             throw $this->createNotFoundException('Aucun amap avec cet identifiant');
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($amap);
         $em->flush();
     }
@@ -73,7 +73,7 @@ class AmapsController extends FOSRestController
     }
 
     private function processForm(Request $request, Amap $amap) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         //si nouveau retourne Created sinon No Content
         if ($em->contains($amap)) {
