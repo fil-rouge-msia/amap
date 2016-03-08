@@ -1,3 +1,6 @@
 amap:
     type: rest
     resource: "@AppBundle/Controller/AmapsController.php"
+    name_prefix:  api_
+    options:
+        expose: true

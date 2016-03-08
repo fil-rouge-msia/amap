@@ -5,8 +5,10 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
         {% endblock %}
-        <link rel="stylesheet" type="text/css" href="styles/application.css" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('styles/application.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="{{ asset('scripts/vendor.js') }}"></script>
+        <base href="/">
     </head>
     <body>
         <div class="navbar navbar-default">
@@ -18,7 +20,11 @@
         </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            <script src="scripts/vendor.js"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+            <script type="text/javascript" src="{{ asset('app/app.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/core/core.module.js') }}"></script>
         {% endblock %}
     </body>
 </html>

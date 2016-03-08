@@ -42,14 +42,15 @@ gulp.task('sass', ['browserSync'], function() {
     }));
 });
 
-//Relance automatiquement la compilation si un fichier sass est modifié
+//Relance automatiquement la compilation si un fichier côté client est modifié
 gulp.task('watch', function() {
   gulp.watch('./app/Resources/assets/sass/*.scss', ['sass']);
+  gulp.watch('./web/app/**/*.js', browserSync.reload);
 });
 
 //Concatène les fichiers javascript
 gulp.task('scripts', function() {
-  return gulp.src(mainBowerFiles({
+  gulp.src(mainBowerFiles({
     filter: new RegExp('.+\.js')
   }))
     .pipe(concat('vendor.js'))

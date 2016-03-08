@@ -98,7 +98,7 @@ class AmapsController extends FOSRestController
 
             $response->headers->set('Location',
                 $this->generateUrl(
-                    'get_amap', array('amap' => $amap->getId())
+                    'api_get_amap', array('amap' => $amap->getId())
                 )
             );
 

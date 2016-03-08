@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container" data-ng-app>
+    <div class="container" data-ng-app="AmapApp">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
@@ -9,10 +9,7 @@
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1>Amaps</h1>
-                <label>Name:</label>
-                <input type="text" ng-model="yourName" placeholder="Enter a name here">
-                <h1>Hello <span data-ng-bind="yourName"></span>!</h1>
+                <div ng-view></div>
             </div>
         </div>
     </div>
