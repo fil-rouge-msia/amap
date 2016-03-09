@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}AMAP !{% endblock %}</title>
         {% block stylesheets %}
         {% endblock %}
         <link rel="stylesheet" type="text/css" href="{{ asset('styles/application.css') }}" />
@@ -10,11 +10,11 @@
         <script src="{{ asset('scripts/vendor.js') }}"></script>
         <base href="/">
     </head>
-    <body>
-        <div class="navbar navbar-default">
+    <body data-ng-app="AmapApp">
+        <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">AMAP</a>
+                    <a class="navbar-brand" data-ui-sref="home">AMAP</a>
                 </div>
             </div>
         </div>
@@ -25,6 +25,7 @@
 
             <script type="text/javascript" src="{{ asset('app/app.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/core/core.module.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/amap/amap.module.js') }}"></script>
         {% endblock %}
     </body>
 </html>

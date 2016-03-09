@@ -23,15 +23,15 @@ gulp.task('serve', function() {
 //Lance le rafraichissement automatique du navigateur
 gulp.task('browserSync', ['serve'], function() {
   browserSync.init([
-  	'app/Resources/assets',
-    'app/Resources/views'
+    'app/Resources/views',
+    './web/app/**'
   ], {
   	proxy: '127.0.0.1:8000'
   });
 })
  
 //Compile les fichiers sass en un fichier css
-gulp.task('sass', ['browserSync'], function() {
+gulp.task('sass', function() {
   return gulp.src('./app/Resources/assets/sass/application.scss')
   	.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -43,9 +43,8 @@ gulp.task('sass', ['browserSync'], function() {
 });
 
 //Relance automatiquement la compilation si un fichier côté client est modifié
-gulp.task('watch', function() {
+gulp.task('watch', ['browserSync'], function() {
   gulp.watch('./app/Resources/assets/sass/*.scss', ['sass']);
-  gulp.watch('./web/app/**/*.js', browserSync.reload);
 });
 
 //Concatène les fichiers javascript

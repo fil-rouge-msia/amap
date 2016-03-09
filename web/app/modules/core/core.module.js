@@ -2,19 +2,21 @@
 
 var core = angular.module('core', []);
 
-core.config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/',
+core.config(['$stateProvider', function($stateProvider) {
+	$stateProvider.state('home',
 	{
-    	templateUrl: 'app/modules/core/partials/home.html',
-    	controller: 'HomeController'
+		url: '/',
+    	templateUrl: 'app/modules/core/partials/home.html'
 	})
-	.when('/404',
+	.state('404',
 	{
+		url: '/404',
     	templateUrl: 'app/modules/core/partials/404.html'
-	})
-	.otherwise('/404');
+	});
 }]);
 
-core.controller('HomeController', ['$scope', function($scope) {
-
+core.run(['$rootScope', '$state', function($rootScope, $state) {
+	$rootScope.$on('$stateChangeError', function(event) {
+		$state.go('404');
+	});
 }]);
