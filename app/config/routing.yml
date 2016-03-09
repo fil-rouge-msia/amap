@@ -1,3 +1,13 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+api:
+    type: rest
+    prefix: /api
+    resource: "@AppBundle/Resources/config/api-routing.yml"
+
 app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    path:  /{url}
+    defaults: { _controller: AppBundle:Default:index }
+    requirements:
+        url: ".*"

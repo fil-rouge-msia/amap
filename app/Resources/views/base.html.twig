@@ -2,12 +2,30 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}AMAP !{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('styles/application.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="{{ asset('scripts/vendor.js') }}"></script>
+        <base href="/">
     </head>
-    <body>
+    <body data-ng-app="AmapApp">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" data-ui-sref="home">AMAP</a>
+                </div>
+            </div>
+        </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+            <script type="text/javascript" src="{{ asset('app/app.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/core/core.module.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/amap/amap.module.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
