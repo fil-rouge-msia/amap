@@ -16,3 +16,4 @@
 /web/bundles/
 /app/Resources/assets/vendor/
 /node_modules
+/nbproject/private/
