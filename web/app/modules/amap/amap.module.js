@@ -3,7 +3,6 @@
 var amap = angular.module('amap', []);
 
 amap.controller('ListController', ['$scope', 'Restangular', function($scope, Restangular) {
-	console.log('caca');
 	var baseAmaps = Restangular.all('amaps');
 
 	baseAmaps.getList().then(function(amaps) {
