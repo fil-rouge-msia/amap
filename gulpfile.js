@@ -15,7 +15,7 @@ gulp.task('default', ['sass', 'scripts', 'watch'], function() {
 
 //Lance le serveur sous 127.0.0.1:3000
 gulp.task('serve', function() {
-	exec('php bin/console server:start', function(err, stdout, stderr) {
+	exec('php bin/console server:run', function(err, stdout, stderr) {
 		console.log(stdout);
 	});
 });

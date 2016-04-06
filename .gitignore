@@ -16,3 +16,5 @@
 /web/bundles/
 /app/Resources/assets/vendor/
 /node_modules
+.idea/
+https://github.com/Khaeos/amap.git
