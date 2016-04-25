@@ -9,3 +9,23 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 		$scope.amaps = amaps;
 	});
 }]);
+
+amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {
+        Restangular.one('amaps', $stateParams.id).get().then(function(amap){
+            $scope.amap = amap;
+        });
+        
+        $scope.envoiAmap= function(){
+            $scope.amap.put();
+        };
+}]);
+
+amap.controller('AddAmapController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {
+        Restangular.one('amaps', $stateParams.id).get().then(function(amap){
+            $scope.amap = amap;
+        });
+        
+        $scope.envoiAmap= function(){
+            $scope.amap.post();
+        };
+}]);

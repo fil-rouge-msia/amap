@@ -1,7 +1,7 @@
 <div class="action-header row">
 	<h2 class="col-md-11">Liste</h2>
 	<div class="actions col-md-1">
-		<a href class="btn btn-primary">Ajouter</a>
+		<a data-ui-sref="amaps.add()" href class="btn btn-primary">Ajouter</a>
 	</div>
 </div>
 
@@ -21,7 +21,7 @@
 	  			<td data-ng-bind="amap.adresse"></td>
 	  			<td data-ng-bind="amap.bancaire"></td>
 	  			<td>
-	  				<a class="btn btn-default" href><i class="glyphicon glyphicon-pencil"></i></a>
+	  				<a data-ui-sref="amaps.edit({id:amap.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
 	  				<a class="btn btn-danger" href><i class="glyphicon glyphicon-trash"></i></a>
 	  			</td>
 			</tr>
