@@ -1,0 +1,15 @@
+'use strict';
+
+produit.config(['$stateProvider', function($stateProvider) {
+	$stateProvider.state('produits',
+	{
+		url: '/produits',
+    	templateUrl: 'app/modules/produit/partials/produits.html'
+	})
+	.state('produits.list',
+	{
+		url: '/',
+    	templateUrl: 'app/modules/produit/partials/list-produits.html',
+    	controller: 'ListProduitController'
+	})
+}]);
