@@ -1,6 +1,6 @@
 (function() {'use strict';
 
-	var app = angular.module('AmapApp', ['ui.router', 'restangular',
+	var app = angular.module('AmapApp', ['ui.router', 'restangular', 'ng-token-auth',
 		'core', 'amap', 'login', 'produit']); //Ajouter ici tous les modules
 
 	//Mode HTML5
