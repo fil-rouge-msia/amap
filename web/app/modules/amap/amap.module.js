@@ -8,6 +8,13 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 	baseAmaps.getList().then(function(amaps) {
 		$scope.amaps = amaps;
 	});
+        
+        $scope.delete = function(amap) {
+		amap.remove().then(function(){
+			var idAmap = $scope.amaps.indexOf(amap);
+			$scope.amaps.splice(idAmap,1);
+		});
+	};
 }]);
 
 amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {

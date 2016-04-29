@@ -2,11 +2,11 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Amap;
 
-class AmapType extends AbstractType
+class AmapType extends ApiType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,15 +21,8 @@ class AmapType extends AbstractType
             ->add('bancaire')
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Amap',
-            'csrf_protection' => false //Pas besoin en REST
-        ));
+
+    public function getEntity() {
+        return Amap::class;
     }
 }
