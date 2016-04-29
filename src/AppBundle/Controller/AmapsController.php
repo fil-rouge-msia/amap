@@ -102,6 +102,8 @@ class AmapsController extends FOSRestController
                 )
             );
 
+            $response->setContent($this->container->get('serializer')->serialize($amap, 'json'));
+
             return $response;
         }
         else {

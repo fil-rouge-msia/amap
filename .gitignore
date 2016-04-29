@@ -17,4 +17,5 @@
 /app/Resources/assets/vendor/
 /node_modules
 .idea/
-https://github.com/Khaeos/amap.git
+/web/scripts/vendor.js
+/web/styles/application.css
