@@ -8,21 +8,21 @@
 <div class="table-responsive">
 	<table class="table table-hover table-striped">
 		<thead>
-			<th>Nom</th>
-			<th>Lieu</th>
-			<th>Adresse</th>
-			<th>Bancaire</th>
+			<th>Type produit</th>
+			<th>Libellé</th>
+			<th>Saison</th>
+			<th>Méthode agronomique</th>
 			<th>Actions</th>
 		</thead>
 		<tbody>
-			<tr data-ng-repeat="amap in amaps">
-	  			<td data-ng-bind="amap.nom"></td>
-	  			<td data-ng-bind="amap.lieu"></td>
-	  			<td data-ng-bind="amap.adresse"></td>
-	  			<td data-ng-bind="amap.bancaire"></td>
+			<tr data-ng-repeat="produit in produits">
+	  			<td data-ng-bind="produit.type"></td>
+	  			<td data-ng-bind="produit.libelle"></td>
+	  			<td data-ng-bind="produit.saison"></td>
+	  			<td data-ng-bind="produit.methode"></td>
 	  			<td>
 	  				<a class="btn btn-default" href><i class="glyphicon glyphicon-pencil"></i></a>
-	  				<a class="btn btn-danger" href ng-click ="delete(amap)"><i class="glyphicon glyphicon-trash"></i></a>
+	  				<a class="btn btn-danger" href><i class="glyphicon glyphicon-trash"></i></a>
 	  			</td>
 			</tr>
 		</tbody>
