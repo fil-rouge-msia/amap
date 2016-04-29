@@ -19,4 +19,11 @@ produit.config(['$stateProvider', function ($stateProvider) {
                 templateUrl: 'app/modules/produit/partials/add-produit.html',
                 controller: 'AddProduitController'
             })
+
+        .state('produits.edit',
+            {
+                url: '/edit/:id',
+                templateUrl: 'app/modules/produit/partials/edit-produit.html',
+                controller: 'EditProduitController'
+            })
 }]);

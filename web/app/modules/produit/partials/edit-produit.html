@@ -1,9 +1,9 @@
 <div class="action-header row">
-	<h2 class="col-md-11">Ajout d'un produit</h2>
+	<h2 class="col-md-11">Modification d'un produit</h2>
 </div>
 
-<div ng-controller="AddProduitController" ng-submit="envoiProduit()">
-<form>
+<div ng-controller="EditProduitController" ng-submit="envoiProduit()">
+	<form>
 		<fieldset class="form-group">
 			<label for="typeProduit">Type de produit</label>
 			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type">
@@ -20,6 +20,7 @@
 			<label for="methode_agro">Méthode agronomique</label>
 			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique">
 		</fieldset>
-		<button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
 </div>
+

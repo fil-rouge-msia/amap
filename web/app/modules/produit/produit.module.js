@@ -8,15 +8,23 @@ produit.controller('ListProduitController', ['$scope', 'Restangular', function($
     baseProduits.getList().then(function(produits) {
         $scope.produits = produits;
     });
+
+    $scope.delete = function(produit) {
+        produit.remove().then(function(){
+            var idProduit = $scope.produits.indexOf(produit);
+            $scope.produits.splice(idProduit,1);
+        });
+    };
 }]);
 
-produit.controller('EditProduitController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {
+produit.controller('EditProduitController', ['$scope', 'Restangular', '$state', '$stateParams', function($scope, Restangular, $state, $stateParams) {
     Restangular.one('produits', $stateParams.id).get().then(function(produit){
         $scope.produit = produit;
     });
 
     $scope.envoiProduit= function(){
         $scope.produit.put();
+        $state.go('produits.list');
     };
 }]);
 
