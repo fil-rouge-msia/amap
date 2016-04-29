@@ -17,3 +17,6 @@
 /app/Resources/assets/vendor/
 /node_modules
 /nbproject/private/
+.idea/
+/web/scripts/vendor.js
+/web/styles/application.css

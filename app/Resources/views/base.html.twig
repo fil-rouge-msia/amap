@@ -12,11 +12,16 @@
     </head>
     <body data-ng-app="AmapApp">
         <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" data-ui-sref="home">AMAP</a>
                 </div>
-            </div>
+            <form class="navbar-form navbar-right login-navbar" role="login">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Mot de passe">
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
         </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
@@ -28,6 +33,9 @@
             <script type="text/javascript" src="{{ asset('app/modules/core/core.router.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/amap/amap.module.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/amap/amap.router.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/login/login.module.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/produit/produit.module.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/produit/produit.router.js') }}"></script>
         {% endblock %}
     </body>
 </html>
