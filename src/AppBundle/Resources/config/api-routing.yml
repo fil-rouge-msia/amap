@@ -4,3 +4,10 @@ amap:
     name_prefix:  api_
     options:
         expose: true
+
+produit:
+    type: rest
+    resource: "@AppBundle/Controller/ProduitsController.php"
+    name_prefix:  api_
+    options:
+        expose: true
