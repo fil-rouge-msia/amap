@@ -1,7 +1,7 @@
 <div class="action-header row">
 	<h2 class="col-md-11">Liste</h2>
 	<div class="actions col-md-1">
-		<a href class="btn btn-primary">Ajouter</a>
+		<a data-ui-sref="produits.add_produit" href class="btn btn-primary">Ajouter</a>
 	</div>
 </div>
 
@@ -19,7 +19,7 @@
 	  			<td data-ng-bind="produit.type"></td>
 	  			<td data-ng-bind="produit.libelle"></td>
 	  			<td data-ng-bind="produit.saison"></td>
-	  			<td data-ng-bind="produit.methode"></td>
+	  			<td data-ng-bind="produit.methode_agronomique"></td>
 	  			<td>
 	  				<a class="btn btn-default" href><i class="glyphicon glyphicon-pencil"></i></a>
 	  				<a class="btn btn-danger" href><i class="glyphicon glyphicon-trash"></i></a>

@@ -1,0 +1,14 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Ajout d'un produit</h2>
+</div>
+
+<div ng-controller="AddProduitController" ng-submit="envoiProduit()">
+<form>
+<div>Nom : <input ng-model="produit.type" /></div>
+<div>Lieu : <input ng-model="produit.libelle" /></div>
+<div>Adresse : <input ng-model="produit.saison" /></div>
+<div>Bancaire : <input ng-model="produit.methode_agronomique" /></div>
+<input type="submit" class="btn btn-default"/>
+<a class="btn btn-danger" href="list-produits.html"><i class="glyphicon glyphicon-trash"></i></a>
+</form>
+</div>
