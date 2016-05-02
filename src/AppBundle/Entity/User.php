@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -24,7 +25,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
 
@@ -35,13 +36,46 @@ class User
      */
     private $password;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="permission", type="integer")
-     */
-    private $permission;
+    public function __construct()
+    {
+        $this->salt = md5(uniqid(null, true));
+    }
 
+    public function getRoles() {
+        return array('ROLE_USER');
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->salt,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password,
+            $this->salt
+        ) = unserialize($serialized);
+    }
+
+    public function getUsername() {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+    }
 
     /**
      * Get id
@@ -125,4 +159,3 @@ class User
         return $this->permission;
     }
 }
-
