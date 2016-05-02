@@ -11,3 +11,6 @@ produit:
     name_prefix:  api_
     options:
         expose: true
+
+login_check:
+    path: /login_check

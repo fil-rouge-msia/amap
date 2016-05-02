@@ -13,30 +13,20 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-
-        api:
-            pattern:   ^/api
-            stateless: true
-            lexik_jwt: ~
-
         login:
             pattern:  ^/api/login
             stateless: true
             anonymous: true
             form_login:
-                check_path:               /api/login_check
+                check_path:               login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
+
+        api:
+            pattern:   ^/api
+            stateless: true
+            lexik_jwt: ~
 
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

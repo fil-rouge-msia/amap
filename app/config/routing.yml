@@ -11,6 +11,3 @@ app:
     defaults: { _controller: AppBundle:Default:index }
     requirements:
         url: ".*"
-
-api_login_check:
-    path: /api/login_check
