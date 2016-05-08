@@ -38,7 +38,6 @@ class User implements UserInterface, \Serializable
 
     public function __construct()
     {
-        $this->salt = md5(uniqid(null, true));
     }
 
     public function getRoles() {
@@ -46,7 +45,7 @@ class User implements UserInterface, \Serializable
     }
 
     public function getSalt() {
-        return $this->salt;
+        null;
     }
 
     public function serialize()

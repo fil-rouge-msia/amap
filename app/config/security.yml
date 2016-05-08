@@ -2,10 +2,15 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
     providers:
-        in_memory:
-            memory: ~
+        user_db:
+            entity:
+                class: AppBundle:User
+                property: email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,15 +18,17 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/api/login
-            stateless: true
-            anonymous: true
-            form_login:
-                check_path:               login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
+        gettoken:
+            pattern:    ^/api/login
+            stateless:  true
+            gfreeau_get_jwt:
+                username_parameter:         username
+                password_parameter:         password
+                post_only:                  true
+                authentication_provider:    security.authentication.provider.dao
+                user_checker:               security.user_checker 
+                success_handler:            lexik_jwt_authentication.handler.authentication_success
+                failure_handler:            lexik_jwt_authentication.handler.authentication_failure
 
         api:
             pattern:   ^/api
@@ -29,5 +36,6 @@ security:
             lexik_jwt: ~
 
     access_control:
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/login,      roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/register,   roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,            roles: IS_AUTHENTICATED_FULLY }

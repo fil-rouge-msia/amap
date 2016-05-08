@@ -29,7 +29,7 @@
 
 	app.config(['$authProvider', function($authProvider) {
 		$authProvider.configure({
-			emailSignInPath: '/login_check'
+			emailSignInPath: '/login'
 		})
 	}])
 })();

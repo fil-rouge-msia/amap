@@ -12,5 +12,6 @@ produit:
     options:
         expose: true
 
-login_check:
-    path: /login_check
+post:
+    resource: "@AppBundle/Controller/AuthController.php"
+    type:     annotation
