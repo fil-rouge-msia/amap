@@ -4,7 +4,10 @@ produit.config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state('produits',
         {
             url: '/produits',
-            templateUrl: 'app/modules/produit/partials/produits.html'
+            templateUrl: 'app/modules/produit/partials/produits.html',
+            data: {
+                requiresLogin: true
+            }
         })
         .state('produits.list',
             {

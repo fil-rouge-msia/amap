@@ -1,6 +1,6 @@
 (function() {'use strict';
 
-	var app = angular.module('AmapApp', ['ui.router', 'restangular', 'ng-token-auth',
+	var app = angular.module('AmapApp', ['ui.router', 'restangular', 'angular-jwt', 'angular-storage', 
 		'core', 'amap', 'produit', 'auth']); //Ajouter ici tous les modules
 
 	//Mode HTML5
@@ -27,9 +27,21 @@
 		});
 	}]);
 
-	app.config(['$authProvider', function($authProvider) {
-		$authProvider.configure({
-			emailSignInPath: '/login'
-		})
+	app.config(['jwtInterceptorProvider', '$httpProvider', function(jwtInterceptorProvider, $httpProvider) {
+		jwtInterceptorProvider.tokenGetter = function(store) {
+			return store.get('jwt');
+		}
+		$httpProvider.interceptors.push('jwtInterceptor');
+	}]);
+
+	app.run(['$rootScope', '$state', 'store', 'jwtHelper', function($rootScope, $state, store, jwtHelper) {
+		$rootScope.$on('$stateChangeStart', function(e, to) {
+	    	if (to.data && to.data.requiresLogin) {
+	      		if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
+	        		e.preventDefault();
+	        		$state.go('login');
+	      		}
+	    	}
+	  	});
 	}])
 })();

@@ -4,24 +4,34 @@
   	<p class="desc">
   		Connectez-vous à l'aide de vos identifiants personnels afin d'accéder à l'application.
   	</p>
+		
+		<div data-ng-if="badCred" class="alert alert-warning alert-danger" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close" data-ng-click="dismissAlert()">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong>Woops !</strong> Les identifiants entrés sont incorrects.
+		</div>
+
  		<form data-ng-submit="handleLogin()">
-	    <div class="input-group">
-		    <span class="input-group-addon" id="basic-addon1">@</span>
-		    <input type="email" class="form-control" placeholder="Addresse mail" aria-describedby="basic-addon1" 
-		    				required autofocus data-ng-model="auth.username">
-			</div>
-			<div class="input-group">
-		    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i></span>
-		    <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" 
-		    				required data-ng-model="auth.password">
-			</div>
-			<div class="remember">
-				<label>
-					<input value="remember" type="checkbox" data-ng-model="auth.rememberMe">
-					Se souvenir de moi
-				</label>
-			</div>
-			<button type="submit" class="btn btn-primary btn-block">Connexion</button>
+ 			<fieldset data-ng-disabled="isSaving">
+		    <div class="input-group">
+			    <span class="input-group-addon" id="basic-addon1">@</span>
+			    <input type="email" class="form-control" placeholder="Addresse mail" aria-describedby="basic-addon1" 
+			    				required autofocus data-ng-model="auth.username">
+				</div>
+				<div class="input-group">
+			    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+			    <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" 
+			    				required data-ng-model="auth.password">
+				</div>
+				<div class="remember">
+					<label>
+						<input value="remember" type="checkbox" data-ng-model="auth.rememberMe">
+						Se souvenir de moi
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary btn-block">Connexion</button>
+			</fieldset>
 		</form>
 		<div class="text-right pass-lost">
 			<a href="">

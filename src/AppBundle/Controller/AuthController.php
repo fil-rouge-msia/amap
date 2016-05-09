@@ -15,11 +15,4 @@ class AuthController extends Controller
     {
         return new Response('', 401);
     }
-
-    /**
-     * @Route("/register", name="register")
-     */
-    public function registerAction(Request $request) {
-        return new Response('', 500);
-    }
 }
