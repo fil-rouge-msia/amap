@@ -2,8 +2,8 @@
 
 var auth = angular.module('auth', []);
 
-auth.controller('LoginController', ['$scope', 'jwtHelper', '$http', 'store', '$state', 
-function($scope, jwtHelper, $http, store, $state) {
+auth.controller('LoginController', ['$scope', 'jwtHelper', '$http', '$state', 'authService', 
+function($scope, jwtHelper, $http, $state, authService) {
 	
 	/**
 	 * Si vrai, affiche un message d'erreur indiquant
@@ -21,20 +21,19 @@ function($scope, jwtHelper, $http, store, $state) {
 	$scope.handleLogin = function() {
 		$scope.isSaving = true;
 
-		$http({
-			url: '/api/login',
-			method: 'POST',
-			data: $scope.auth
-	    }).then(function(response) {
-			store.set('jwt', response.data.token);
-			$scope.isSaving = false;
-			//$state.go('home');
-	    }, function(error) {
-			if (error.data.code === 401) {
-				$scope.badCred = true;
-			}
-			$scope.isSaving = false;
-	    });
+		authService.login($scope.auth.username, $scope.auth.password)
+			.then(
+				function(data) {
+					$scope.isSaving = false;
+					$state.go('home');
+				}, 
+				function(error) {
+					if (error.code === 401) {
+						$scope.badCred = true;
+					}
+					$scope.isSaving = false;
+				}
+			);
 	}
 
 	$scope.dismissAlert = function() {
