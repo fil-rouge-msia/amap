@@ -2,10 +2,15 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
     providers:
-        in_memory:
-            memory: ~
+        user_db:
+            entity:
+                class: AppBundle:User
+                property: email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +18,24 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+        gettoken:
+            pattern:    ^/api/login
+            stateless:  true
+            gfreeau_get_jwt:
+                username_parameter:         username
+                password_parameter:         password
+                post_only:                  true
+                authentication_provider:    security.authentication.provider.dao
+                user_checker:               security.user_checker 
+                success_handler:            lexik_jwt_authentication.handler.authentication_success
+                failure_handler:            lexik_jwt_authentication.handler.authentication_failure
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+        api:
+            pattern:   ^/api
+            stateless: true
+            lexik_jwt: ~
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/api/login,      roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/register,   roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api,            roles: IS_AUTHENTICATED_FULLY }

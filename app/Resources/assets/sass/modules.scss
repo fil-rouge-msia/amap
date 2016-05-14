@@ -37,3 +37,31 @@
 {
   margin-right: 20px;
 }
+
+.login.panel {
+  margin-top: 50px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login .input-group {
+  margin-top: 10px;
+}
+
+.login button[type="submit"] {
+  margin-top: 20px;
+}
+
+.login .remember label {
+  font-weight: normal;
+  margin-top: 10px;
+}
+
+.login .desc {
+  margin-bottom: 20px;
+}
+
+.login .pass-lost {
+  margin-top: 20px;
+}
