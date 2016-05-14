@@ -5,6 +5,14 @@ auth.config(['$stateProvider', function($stateProvider) {
 	{
 		url: '/login',
     	templateUrl: 'app/modules/auth/partials/login.html',
-    	controller: 'LoginController'
+    	controller: 'LoginController',
+    	data: {
+    		anonymous: true
+    	}
+	})
+	.state('logout', 
+	{
+		url: '/logout',
+		controller: 'LogoutController'
 	})
 }]);

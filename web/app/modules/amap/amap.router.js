@@ -4,10 +4,7 @@ amap.config(['$stateProvider', function($stateProvider) {
 	$stateProvider.state('amaps',
 	{
 		url: '/amaps',
-    	templateUrl: 'app/modules/amap/partials/amaps.html',
-    	data: {
-	    	requiresLogin: true
-	    }
+    	templateUrl: 'app/modules/amap/partials/amaps.html'
 	})
 	.state('amaps.list',
 	{

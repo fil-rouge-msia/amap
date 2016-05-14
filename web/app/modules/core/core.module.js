@@ -9,7 +9,10 @@ function($scope, authService) {
     	$scope.currentUser = authService.currentUser();
   	};
 
+  	//Appelle updateAuth() à chaque modification de l'état de 
+  	//connexion
   	authService.registerObserverCallback(updateAuth);
+  	updateAuth();
 }]);
 
 core.run(['$rootScope', '$state', function($rootScope, $state) {

@@ -2,8 +2,8 @@
 
 var auth = angular.module('auth', []);
 
-auth.controller('LoginController', ['$scope', 'jwtHelper', '$http', '$state', 'authService', 
-function($scope, jwtHelper, $http, $state, authService) {
+auth.controller('LoginController', ['$scope', '$state', 'authService', 
+function($scope, $state, authService) {
 	
 	/**
 	 * Si vrai, affiche un message d'erreur indiquant
@@ -40,4 +40,10 @@ function($scope, jwtHelper, $http, $state, authService) {
 		$scope.badCred = false;
 	}
 
+}]);
+
+auth.controller('LogoutController', ['$state', 'authService', 
+function($state, authService) {
+	authService.logout();
+	$state.go('home');
 }]);

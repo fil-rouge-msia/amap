@@ -34,14 +34,22 @@
 		$httpProvider.interceptors.push('jwtInterceptor');
 	}]);
 
-	app.run(['$rootScope', '$state', 'store', 'jwtHelper', function($rootScope, $state, store, jwtHelper) {
+	app.run(['$rootScope', '$state', 'authService', function($rootScope, $state, authService) {
+		//Lors du changement d'état, si ce dernier nécessite d'être connecté
+		//on vérifie si l'utilisateur est connecté et si son token est toujours
+		//valide
 		$rootScope.$on('$stateChangeStart', function(e, to) {
-	    	if (to.data && to.data.requiresLogin) {
-	      		if (!store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
+	    	if (!to.data || !to.data.anonymous) {
+	      		if (!authService.isLoggedIn()) {
 	        		e.preventDefault();
 	        		$state.go('login');
 	      		}
 	    	}
 	  	});
+
+	  	//Lors du lancement de l'application
+	  	if (!authService.isLoggedIn()) {
+    		$state.go('login');
+  		}
 	}]);
 })();
