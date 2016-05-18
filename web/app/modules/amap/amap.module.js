@@ -27,12 +27,14 @@ amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', 
         };
 }]);
 
-amap.controller('AddAmapController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {
-        Restangular.one('amaps', $stateParams.id).get().then(function(amap){
-            $scope.amap = amap;
-        });
+amap.controller('AddAmapController', ['$scope', 'Restangular', '$state', function($scope, Restangular, $state) {
+        var baseAmap = Restangular.all('amaps');
+        $scope.envoiAmap = {};
         
         $scope.envoiAmap= function(){
-            $scope.amap.post();
+            baseAmap.post($scope.amap).then(function() {
+                $state.go('amaps.list');
+            });
+                 
         };
 }]);

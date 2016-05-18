@@ -18,7 +18,7 @@ amap.config(['$stateProvider', function($stateProvider) {
             templateUrl: 'app/modules/amap/partials/formulaire.html',
             controller: 'EditAmapController'
         })
-                .statte('amaps.add',
+                .state('amaps.add',
         {
             url: '/add',
             templateUrl: 'app/modules/amap/partials/addAmapForm.html',
