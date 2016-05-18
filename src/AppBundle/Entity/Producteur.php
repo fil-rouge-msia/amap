@@ -35,14 +35,10 @@ class Producteur
      */
     private $prenomProducteur;
 
-    // ...
     /**
-     * ORM/@ManyToOne(targetEntity="Amap", inversedBy="producteurs")
-     * ORM/@JoinColumn(name="amap_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
      */
-    private $amapProducteur;
-    // ...
-
+    private $amap;
 
     /**
      * Get id
@@ -102,21 +98,27 @@ class Producteur
         return $this->prenomProducteur;
     }
 
-    public function setAmapProducteur($amapProducteur)
+    /**
+     * Set amap
+     *
+     * @param \AppBundle\Entity\Amap $amap
+     *
+     * @return Producteur
+     */
+    public function setAmap(\AppBundle\Entity\Amap $amap = null)
     {
-        $this->amapProducteur = $amapProducteur;
+        $this->amap = $amap;
 
         return $this;
     }
 
     /**
-     * Get prenomProducteur
+     * Get amap
      *
-     * @return string
+     * @return \AppBundle\Entity\Amap
      */
-    public function getAmapProducteur()
+    public function getAmap()
     {
-        return $this->amapProducteur;
+        return $this->amap;
     }
 }
-

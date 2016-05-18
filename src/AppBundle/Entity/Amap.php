@@ -54,15 +54,15 @@ class Amap
      */
     private $bancaire;
 
-    // ...
     /**
-     * ORM/@OneToMany(targetEntity="Producteur", mappedBy="amap")
+     * @var ArrayCollection $producteurs
+     * 
+     * @ORM\OneToMany(targetEntity="Producteur", mappedBy="amap")
      */
-    private $producteur;
-    // ...
+    private $producteurs;
 
     public function __construct() {
-        $this->features = new ArrayCollection();
+        $this->producteurs = new ArrayCollection();
     }
 
     /**
@@ -186,26 +186,36 @@ class Amap
     }
 
     /**
-     * Set producteur
+     * Add producteur
      *
-     * @param string $producteur
+     * @param \AppBundle\Entity\Producteur $producteur
      *
      * @return Amap
      */
-    public function setProducteur($producteur)
+    public function addProducteur(\AppBundle\Entity\Producteur $producteur)
     {
-        $this->producteur = $producteur;
+        $this->producteurs[] = $producteur;
 
         return $this;
     }
 
     /**
-     * Get producteur
+     * Remove producteur
      *
-     * @return string
+     * @param \AppBundle\Entity\Producteur $producteur
      */
-    public function getProducteur()
+    public function removeProducteur(\AppBundle\Entity\Producteur $producteur)
     {
-        return $this->producteur;
+        $this->producteurs->removeElement($producteur);
+    }
+
+    /**
+     * Get producteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducteurs()
+    {
+        return $this->producteurs;
     }
 }
