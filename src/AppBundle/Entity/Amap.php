@@ -57,7 +57,7 @@ class Amap
 
     /**
      * @var ArrayCollection $producteurs
-     * 
+     *
      * @ORM\OneToMany(targetEntity="Producteur", mappedBy="amap")
      */
     private $producteurs;
