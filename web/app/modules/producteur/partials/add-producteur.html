@@ -1,0 +1,17 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Ajout d'un producteur</h2>
+</div>
+
+<div ng-controller="AddProducteurController" ng-submit="envoiProducteur()">
+<form>
+		<fieldset class="form-group">
+			<label for="NomProducteur">Nom du producteur</label>
+			<input type="text" class="form-control" id="nomProducteur" ng-model="producteur.nom_producteur">
+		</fieldset>
+		<fieldset class="form-group">
+			<label for="PrenomProducteur">Prénom du producteur</label>
+			<input type="text" class="form-control" id="prenomProducteur" ng-model="producteur.prenom_producteur">
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+</div>

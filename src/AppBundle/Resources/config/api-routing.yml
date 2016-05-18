@@ -11,3 +11,10 @@ produit:
     name_prefix:  api_
     options:
         expose: true
+
+producteur:
+    type: rest
+    resource: "@AppBundle/Controller/ProducteursController.php"
+    name_prefix:  api_
+    options:
+        expose: true

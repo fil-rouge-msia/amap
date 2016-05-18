@@ -54,7 +54,6 @@ class Amap
      */
     private $bancaire;
 
-
     /**
      * Get id
      *
