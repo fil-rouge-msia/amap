@@ -1,7 +1,7 @@
 (function() {'use strict';
 
-	var app = angular.module('AmapApp', ['ui.router', 'restangular',
-		'core', 'amap', 'login', 'produit']); //Ajouter ici tous les modules
+	var app = angular.module('AmapApp', ['ui.router', 'restangular', 'angular-jwt', 'angular-storage', 
+		'core', 'amap', 'produit', 'auth']); //Ajouter ici tous les modules
 
 	//Mode HTML5
 	app.config(['$locationProvider',
@@ -25,5 +25,31 @@
 			}
 			return retElem;
 		});
+	}]);
+
+	app.config(['jwtInterceptorProvider', '$httpProvider', function(jwtInterceptorProvider, $httpProvider) {
+		jwtInterceptorProvider.tokenGetter = function(store) {
+			return store.get('jwt');
+		}
+		$httpProvider.interceptors.push('jwtInterceptor');
+	}]);
+
+	app.run(['$rootScope', '$state', 'authService', function($rootScope, $state, authService) {
+		//Lors du changement d'état, si ce dernier nécessite d'être connecté
+		//on vérifie si l'utilisateur est connecté et si son token est toujours
+		//valide
+		$rootScope.$on('$stateChangeStart', function(e, to) {
+	    	if (!to.data || !to.data.anonymous) {
+	      		if (!authService.isLoggedIn()) {
+	        		e.preventDefault();
+	        		$state.go('login');
+	      		}
+	    	}
+	  	});
+
+	  	//Lors du lancement de l'application
+	  	if (!authService.isLoggedIn()) {
+    		$state.go('login');
+  		}
 	}]);
 })();
