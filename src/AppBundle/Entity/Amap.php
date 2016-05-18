@@ -54,6 +54,17 @@ class Amap
      */
     private $bancaire;
 
+    // ...
+    /**
+     * ORM/@OneToMany(targetEntity="Producteur", mappedBy="amap")
+     */
+    private $producteur;
+    // ...
+
+    public function __construct() {
+        $this->features = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -172,5 +183,29 @@ class Amap
     public function getBancaire()
     {
         return $this->bancaire;
+    }
+
+    /**
+     * Set producteur
+     *
+     * @param string $producteur
+     *
+     * @return Amap
+     */
+    public function setProducteur($producteur)
+    {
+        $this->producteur = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return string
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
     }
 }
