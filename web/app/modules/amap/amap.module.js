@@ -17,4 +17,5 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 	};
 
 
+
 }]);
