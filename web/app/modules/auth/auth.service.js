@@ -3,7 +3,6 @@ function($q, $http, store, jwtHelper) {
 
 	var currentUser,
 		isLoggedIn = false,
-		deferred = $q.defer(),
 		observerCallbacks = [];
 
 	//Fonctions privées
@@ -20,6 +19,8 @@ function($q, $http, store, jwtHelper) {
 		 * @return {[type]} [description]
 		 */
 		login: function(username, password) {
+			var deferred = $q.defer();
+			
 			return $http({
 				url: '/api/login',
 				method: 'POST',
