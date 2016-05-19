@@ -17,13 +17,15 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 	};
 }]);
 
-amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', function($scope, Restangular, $stateParams) {
+amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', '$state', function($scope, Restangular, $stateParams, $state) {
         Restangular.one('amaps', $stateParams.id).get().then(function(amap){
             $scope.amap = amap;
         });
         
         $scope.envoiAmap= function(){
-            $scope.amap.put();
+            $scope.amap.put().then(function(){
+                $state.go('amaps.list');
+            });
         };
 }]);
 
