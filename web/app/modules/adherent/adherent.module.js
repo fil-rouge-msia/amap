@@ -23,8 +23,9 @@ adherent.controller('EditAdherentController', ['$scope', 'Restangular', '$state'
     });
 
     $scope.envoiAdherent= function(){
-        $scope.adherent.put();
-        $state.go('adherents.list');
+        $scope.adherent.put().then(function(){
+            $state.go('adherents.list');
+        });
     };
 }]);
 
