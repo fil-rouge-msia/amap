@@ -18,3 +18,14 @@ producteur:
     name_prefix:  api_
     options:
         expose: true
+
+adherant:
+    type: rest
+    resource: "@AppBundle/Controller/AdherantsController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
+post:
+    resource: "@AppBundle/Controller/AuthController.php"
+    type:     annotation

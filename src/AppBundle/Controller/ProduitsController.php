@@ -36,7 +36,7 @@ class ProduitsController extends FOSRestController
      * Supprime un produit
      * @param  Produit   $produit
      */
-    public function deleteAmapAction(Produit $produit)
+    public function deleteProduitAction(Produit $produit)
     {
         if (!$produit)
             throw $this->createNotFoundException('Aucune amap avec cet identifiant');

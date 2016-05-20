@@ -10,18 +10,25 @@
         <script src="{{ asset('scripts/vendor.js') }}"></script>
         <base href="/">
     </head>
-    <body data-ng-app="AmapApp">
+    <body data-ng-app="AmapApp" data-ng-controller="CoreController">
         <div class="navbar navbar-default navbar-fixed-top">
-                <div class="navbar-header">
-                    <a class="navbar-brand" data-ui-sref="home">AMAP</a>
-                </div>
-            <form class="navbar-form navbar-right login-navbar" role="login">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email">
-                    <input type="text" class="form-control" placeholder="Mot de passe">
-                </div>
-                <button type="submit" class="btn btn-primary">Se connecter</button>
-            </form>
+            <div class="navbar-header">
+                <a class="navbar-brand" data-ui-sref="home">AMAP</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li data-ng-if="!isLoggedIn">
+                    <a data-ui-sref="login">Se connecter</a>
+                </li>
+                <li data-ng-if="isLoggedIn" class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span data-ng-bind="currentUser.username"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a data-ui-sref="logout">Se déconnecter</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         {% block body %}{% endblock %}
         {% block javascripts %}
@@ -33,11 +40,13 @@
             <script type="text/javascript" src="{{ asset('app/modules/core/core.router.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/amap/amap.module.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/amap/amap.router.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('app/modules/login/login.module.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/produit/produit.module.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/produit/produit.router.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/producteur/producteur.module.js') }}"></script>
             <script type="text/javascript" src="{{ asset('app/modules/producteur/producteur.router.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/auth/auth.module.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/auth/auth.router.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('app/modules/auth/auth.service.js') }}"></script>
         {% endblock %}
     </body>
 </html>
