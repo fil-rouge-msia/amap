@@ -88,6 +88,7 @@ class AmapsController extends FOSRestController
         $form = $this->createForm(AmapType::class, $amap, array('method' => $method));
 
         $form->handleRequest($request);
+        
 
         if ($form->isValid()) {
             $em->persist($amap);

@@ -12,4 +12,16 @@ amap.config(['$stateProvider', function($stateProvider) {
     	templateUrl: 'app/modules/amap/partials/list-amaps.html',
     	controller: 'ListController'
 	})
+        .state('amaps.edit',
+        {
+            url: '/edit/:id',
+            templateUrl: 'app/modules/amap/partials/formulaire.html',
+            controller: 'EditAmapController'
+        })
+                .state('amaps.add',
+        {
+            url: '/add',
+            templateUrl: 'app/modules/amap/partials/addAmapForm.html',
+            controller: 'AddAmapController'
+        })
 }]);
