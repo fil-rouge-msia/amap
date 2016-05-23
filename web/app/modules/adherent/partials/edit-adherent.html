@@ -1,0 +1,18 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Modification d'un adhérent</h2>
+</div>
+
+<div ng-controller="EditAdherentController" ng-submit="envoiAdherent()">
+<form>
+		<fieldset class="form-group">
+			<label for="nom">Nom</label>
+			<input type="text" class="form-control" id="nom" ng-model="adherent.nom">
+		</fieldset>
+		<fieldset class="form-group">
+			<label for="prenom">Prénom</label>
+			<input type="text" class="form-control" id="prenom" ng-model="adherent.prenom">
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+                <button type="button" class="btn btn-primary" data-ui-sref="adherents.list">Retour</button>
+</form>
+</div>
