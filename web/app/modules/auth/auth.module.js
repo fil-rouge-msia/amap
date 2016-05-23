@@ -47,3 +47,8 @@ function($state, authService) {
 	authService.logout();
 	$state.go('home');
 }]);
+
+auth.controller('LostPassController', ['$state',
+function($state) {
+
+}]);

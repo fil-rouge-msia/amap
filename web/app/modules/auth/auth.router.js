@@ -15,4 +15,13 @@ auth.config(['$stateProvider', function($stateProvider) {
 		url: '/logout',
 		controller: 'LogoutController'
 	})
+	.state('lostPass',
+	{
+		url: '/lost_pass',
+		templateUrl: 'app/modules/auth/partials/lost_pass.html',
+		controller: 'LostPassController',
+		data: {
+    		anonymous: true
+    	}
+	});
 }]);
