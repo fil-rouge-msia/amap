@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Adherant
+ * Adherent
  *
- * @ORM\Table(name="adherant")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AdherantRepository")
+ * @ORM\Table(name="adherent")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AdherentRepository")
  */
-class Adherant
+class Adherent
 {
     /**
      * @var int
@@ -53,7 +53,7 @@ class Adherant
      *
      * @param string $nom
      *
-     * @return Adherant
+     * @return Adherent
      */
     public function setNom($nom)
     {
@@ -77,7 +77,7 @@ class Adherant
      *
      * @param string $prenom
      *
-     * @return Adherant
+     * @return Adherent
      */
     public function setPrenom($prenom)
     {
