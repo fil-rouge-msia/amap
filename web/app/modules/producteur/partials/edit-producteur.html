@@ -1,0 +1,25 @@
+<div class="action-header row">
+    <h2 class="col-md-11">Modification d'un producteur</h2>
+</div>
+
+<div ng-submit="envoiProducteur()">
+    <form>
+        <fieldset class="form-group">
+            <label for="nomProducteur">Nom du producteur</label>
+            <input type="text" class="form-control" id="nomProducteur" ng-model="producteur.nom_producteur">
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="prenomProducteur">Prénom du producteur</label>
+            <input type="text" class="form-control" id="prenomProducteur" ng-model="producteur.prenom_producteur">
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="singleSelect">Amap liée</label><br>
+            <select name="singleSelect" id="singleSelect" class="form-control"
+                    ng-model="producteur.amap"
+                    ng-options="amap.nom for amap in amaps track by amap.id">
+            </select>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+
