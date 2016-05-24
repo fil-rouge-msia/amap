@@ -20,6 +20,7 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', '$state', function($scope, Restangular, $stateParams, $state) {
         Restangular.one('amaps', $stateParams.id).get().then(function(amap){
             $scope.amap = amap;
+            $scope.amap.producteurs = undefined;
         });
         
         $scope.envoiAmap= function(){
