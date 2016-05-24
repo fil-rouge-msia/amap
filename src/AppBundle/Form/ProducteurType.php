@@ -17,6 +17,7 @@ class ProducteurType extends ApiType
         $builder
             ->add('nom_producteur')
             ->add('prenom_producteur')
+            ->add('amap')
         ;
     }
 
