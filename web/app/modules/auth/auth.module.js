@@ -79,10 +79,18 @@ function($scope, $state, Restangular, authService, $http) {
 			}
 	    }).then(function(response) {
 	    	$scope.isSaving = false;
+	    	$state.go('lostPassSent', {
+	    		email: $scope.lostPass.email
+	    	});
 	    }, function(response) {
 	    	console.log('error !');
 	    	$scope.isSaving = false;
 	    });
 	}
 
+}]);
+
+auth.controller('LostPassSentController', ['$scope', '$stateParams', 
+function($scope, $stateParams) {
+	$scope.email = $stateParams.email;
 }]);

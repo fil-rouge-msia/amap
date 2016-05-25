@@ -18,8 +18,17 @@ auth.config(['$stateProvider', function($stateProvider) {
 	.state('lostPass',
 	{
 		url: '/lost-pass',
-		templateUrl: 'app/modules/auth/partials/lost_pass.html',
+		templateUrl: 'app/modules/auth/partials/lost-pass.html',
 		controller: 'LostPassController',
+		data: {
+    		anonymous: true
+    	}
+	})
+	.state('lostPassSent',
+	{
+		url: '/lost-pass-sent/:email',
+		templateUrl: 'app/modules/auth/partials/lost-pass-sent.html',
+		controller: 'LostPassSentController',
 		data: {
     		anonymous: true
     	}
