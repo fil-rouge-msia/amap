@@ -17,7 +17,7 @@ auth.config(['$stateProvider', function($stateProvider) {
 	})
 	.state('lostPass',
 	{
-		url: '/lost_pass',
+		url: '/lost-pass',
 		templateUrl: 'app/modules/auth/partials/lost_pass.html',
 		controller: 'LostPassController',
 		data: {

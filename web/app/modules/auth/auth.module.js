@@ -48,7 +48,41 @@ function($state, authService) {
 	$state.go('home');
 }]);
 
-auth.controller('LostPassController', ['$state',
-function($state) {
+auth.controller('LostPassController', ['$scope', '$state', 'Restangular', 'authService', '$http', 
+function($scope, $state, Restangular, authService, $http) {
+
+	/**
+	 * Objet contenant les valeurs du 
+	 * formulaire
+	 * @type {Object}
+	 */
+	$scope.lostPass = {};
+
+	/**
+	 * Vrai si requête en cours
+	 * @type {Boolean}
+	 */
+	$scope.isSaving = false;
+
+	/**
+	 * Envoie un mail permettant de réinitialiser
+	 * le mot de passe
+	 */
+	$scope.sendResetPass = function() {
+		$scope.isSaving = true;
+
+		return $http({
+			url: '/api/lost-pass',
+			method: 'PUT',
+			data: {
+				email: $scope.lostPass.email
+			}
+	    }).then(function(response) {
+	    	$scope.isSaving = false;
+	    }, function(response) {
+	    	console.log('error !');
+	    	$scope.isSaving = false;
+	    });
+	}
 
 }]);

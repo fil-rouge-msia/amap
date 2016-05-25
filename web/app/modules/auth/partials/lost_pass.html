@@ -12,12 +12,12 @@
 		  <strong>Woops !</strong> Les identifiants entrés sont incorrects.
 		</div>
 
- 		<form data-ng-submit="handleLogin()">
+ 		<form data-ng-submit="sendResetPass()">
  			<fieldset data-ng-disabled="isSaving">
 		    <div class="input-group">
 			    <span class="input-group-addon" id="basic-addon1">@</span>
 			    <input type="email" class="form-control" placeholder="Addresse mail" aria-describedby="basic-addon1" 
-			    				required autofocus data-ng-model="auth.username">
+			    				required autofocus data-ng-model="lostPass.email">
 				</div>
 				<button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-send"></span> Envoyer</button>
 			</fieldset>
