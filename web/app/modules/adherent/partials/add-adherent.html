@@ -6,11 +6,11 @@
 <form>
 		<fieldset class="form-group">
 			<label for="nom">Nom</label>
-			<input type="text" class="form-control" id="nom" ng-model="adherent.nom">
+			<input type="text" class="form-control" id="nom" ng-model="adherent.nom" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="prenom">Prénom</label>
-			<input type="text" class="form-control" id="prenom" ng-model="adherent.prenom">
+			<input type="text" class="form-control" id="prenom" ng-model="adherent.prenom" required>
 		</fieldset>
 		<button type="submit" class="btn btn-primary">Ajouter</button>
                 <button type="button" class="btn btn-primary" data-ui-sref="adherents.list">Retour</button>
