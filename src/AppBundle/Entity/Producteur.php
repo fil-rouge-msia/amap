@@ -52,7 +52,6 @@ class Producteur
         $this->contrats = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
