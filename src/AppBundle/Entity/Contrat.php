@@ -57,12 +57,12 @@ class Contrat
     private $montantPart;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
+     * @ORM\ManyToOne(targetEntity="Producteur", inversedBy="contrats")
      */
     private $producteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
+     * @ORM\ManyToOne(targetEntity="Adherent", inversedBy="contrats")
      */
     private $adherent;
 
