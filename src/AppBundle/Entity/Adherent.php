@@ -13,11 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Adherent
 {
-
-    public function __construct() {
-        $this->contrats = new ArrayCollection();
-    }
-
     /**
      * @var int
      *
@@ -48,6 +43,20 @@ class Adherent
      *
      * @return integer
      */
+
+    /**
+     * @var ArrayCollection $contrats
+     *
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="adherents")
+     */
+    private $contrats;
+
+    public function __construct()
+    {
+        $this->contrats = new ArrayCollection();
+    }
+
+
     public function getId()
     {
         return $this->id;
@@ -99,5 +108,39 @@ class Adherent
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Adherent
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }

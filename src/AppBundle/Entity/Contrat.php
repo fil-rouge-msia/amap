@@ -56,6 +56,15 @@ class Contrat
      */
     private $montantPart;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
+     */
+    private $producteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
+     */
+    private $adherent;
 
     /**
      * Get id
@@ -185,6 +194,54 @@ class Contrat
     public function getMontantPart()
     {
         return $this->montantPart;
+    }
+
+    /**
+     * Set producteur
+     *
+     * @param \AppBundle\Entity\Producteur $producteur
+     *
+     * @return Contrat
+     */
+    public function setProducteur(\AppBundle\Entity\Producteur $producteur = null)
+    {
+        $this->producteur = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return \AppBundle\Entity\Producteur
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
+    }
+
+    /**
+     * Set adherent
+     *
+     * @param \AppBundle\Entity\Adherent $adherent
+     *
+     * @return Contrat
+     */
+    public function setAdherent(\AppBundle\Entity\Adherent $adherent = null)
+    {
+        $this->adherent = $adherent;
+
+        return $this;
+    }
+
+    /**
+     * Get adherent
+     *
+     * @return \AppBundle\Entity\Adherent
+     */
+    public function getAdherent()
+    {
+        return $this->adherent;
     }
 }
 
