@@ -13,6 +13,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Adherent
 {
+
+    public function __construct() {
+        $this->contrats = new ArrayCollection();
+    }
+
     /**
      * @var int
      *
