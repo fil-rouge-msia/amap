@@ -41,6 +41,18 @@ class Producteur
     private $amap;
 
     /**
+     * @var ArrayCollection $contrats
+     *
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="producteurs")
+     */
+    private $contrats;
+
+    public function __construct()
+    {
+        $this->contrats = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -120,5 +132,39 @@ class Producteur
     public function getAmap()
     {
         return $this->amap;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Producteur
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }
