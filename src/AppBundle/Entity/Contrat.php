@@ -67,6 +67,12 @@ class Contrat
     private $adherent;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="contrats")
+     */
+    private $amap;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -242,6 +248,30 @@ class Contrat
     public function getAdherent()
     {
         return $this->adherent;
+    }
+
+    /**
+     * Set amap
+     *
+     * @param \AppBundle\Entity\Amap $amap
+     *
+     * @return Contrat
+     */
+    public function setAmap(\AppBundle\Entity\Amap $amap = null)
+    {
+        $this->amap = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \AppBundle\Entity\Amap
+     */
+    public function getAmap()
+    {
+        return $this->amap;
     }
 }
 

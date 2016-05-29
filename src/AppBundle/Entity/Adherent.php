@@ -38,11 +38,6 @@ class Adherent
      */
     private $prenom;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
 
     /**
      * @var ArrayCollection $contrats
@@ -56,6 +51,11 @@ class Adherent
         $this->contrats = new ArrayCollection();
     }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
 
     public function getId()
     {

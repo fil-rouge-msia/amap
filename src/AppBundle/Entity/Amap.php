@@ -62,8 +62,16 @@ class Amap
      */
     private $producteurs;
 
+    /**
+     * @var ArrayCollection $contrats
+     *
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="amap")
+     */
+    private $contrats;
+
     public function __construct() {
         $this->producteurs = new ArrayCollection();
+        $this->contrats = new ArrayCollection();
     }
 
     /**
@@ -218,5 +226,39 @@ class Amap
     public function getProducteurs()
     {
         return $this->producteurs;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Amap
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }
