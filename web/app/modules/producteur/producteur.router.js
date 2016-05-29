@@ -26,4 +26,11 @@ produit.config(['$stateProvider', function ($stateProvider) {
                 templateUrl: 'app/modules/producteur/partials/edit-producteur.html',
                 controller: 'EditProducteurController'
             })
+
+        .state('producteurs.view',
+            {
+                url: '/:id',
+                templateUrl: 'app/modules/producteur/partials/view-producteur.html',
+                controller: 'ViewProducteurController'
+            })
 }]);

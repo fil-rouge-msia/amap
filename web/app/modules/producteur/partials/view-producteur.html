@@ -1,0 +1,30 @@
+<div class="action-header row">
+    <h2 class="col-md-11">Fiche de {{ producteur.prenom_producteur }} {{ producteur.nom_producteur }}</h2>
+    <a class="btn btn-default" data-ui-sref="producteurs.edit({id: producteur.id})">
+    	<span class="glyphicon glyphicon-pencil"></span> Éditer
+    </a>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Amap</strong> : {{ producteur.amap.nom }}</h3>
+			</div>
+			<div class="panel-body">
+				Lieu : {{ producteur.amap.lieu }}<br/>
+				Adresse : {{ producteur.amap.adresse }}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Offres de produit</strong></h3>
+			</div>
+			<div class="panel-body">
+				<p class="text-muted text-center">-- Aucune offre --</p>
+			</div>
+		</div>
+	</div>
+</div>

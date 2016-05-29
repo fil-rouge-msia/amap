@@ -86,6 +86,9 @@ class ProducteursController extends FOSRestController
                     'api_get_producteur', array('producteur' => $producteur->getId())
                 )
             );
+
+            $response->setContent($this->container->get('serializer')->serialize($producteur, 'json'));
+
             return $response;
         }
         else {

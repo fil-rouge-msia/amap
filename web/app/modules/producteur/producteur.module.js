@@ -2,7 +2,8 @@
 
 var producteur = angular.module('producteur', []);
 
-producteur.controller('ListProducteurController', ['$scope', 'Restangular', function ($scope, Restangular) {
+producteur.controller('ListProducteurController', ['$scope', 'Restangular',
+function ($scope, Restangular) {
     var baseProducteurs = Restangular.all('producteurs');
 
     baseProducteurs.getList().then(function (producteurs) {
@@ -17,7 +18,7 @@ producteur.controller('ListProducteurController', ['$scope', 'Restangular', func
     };
 }]);
 
-produit.controller('EditProducteurController', ['$scope', 'Restangular', '$state', '$stateParams', function ($scope, Restangular, $state, $stateParams) {
+producteur.controller('EditProducteurController', ['$scope', 'Restangular', '$state', '$stateParams', function ($scope, Restangular, $state, $stateParams) {
 
     Restangular.one('producteurs', $stateParams.id).get().then(function (producteur) {
 
@@ -25,8 +26,12 @@ produit.controller('EditProducteurController', ['$scope', 'Restangular', '$state
         $scope.envoiProducteur = function () {
             $scope.producteur.contrats = undefined;
             $scope.producteur.amap = $scope.producteur.amap.id;
-            $scope.producteur.put();
-            $state.go('producteurs.list');
+            $scope.producteur.put().then(function() {
+                $state.go('producteurs.view', {
+                    id: $scope.producteur.id
+                });
+            });
+            
         };
     });
 
@@ -36,7 +41,7 @@ produit.controller('EditProducteurController', ['$scope', 'Restangular', '$state
     });
 }]);
 
-produit.controller('AddProducteurController', ['$scope', 'Restangular', '$state', function ($scope, Restangular, $state) {
+producteur.controller('AddProducteurController', ['$scope', 'Restangular', '$state', function ($scope, Restangular, $state) {
     var baseProducteurs = Restangular.all('producteurs'),
         baseAmaps = Restangular.all('amaps');
 
@@ -48,10 +53,18 @@ produit.controller('AddProducteurController', ['$scope', 'Restangular', '$state'
 
     $scope.envoiProducteur = function () {
         $scope.producteur.amap = $scope.producteur.amap.id;
-        baseProducteurs.post($scope.producteur).then(function () {
-            $state.go('producteurs.list');
+        baseProducteurs.post($scope.producteur).then(function (producteur) {
+            $state.go('producteurs.view', {
+                id: producteur.id
+            });
         });
     };
 
 }]);
-;
+
+producteur.controller('ViewProducteurController', ['$scope', 'Restangular', '$stateParams',
+function($scope, Restangular, $stateParams) {
+    Restangular.one('producteurs', $stateParams.id).get().then(function(producteur) {
+        $scope.producteur = producteur;
+    })
+}]);
