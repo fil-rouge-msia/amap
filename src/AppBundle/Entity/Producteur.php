@@ -43,7 +43,7 @@ class Producteur
     /**
      * @var ArrayCollection $contrats
      *
-     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="producteurs")
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="producteur")
      */
     private $contrats;
 
