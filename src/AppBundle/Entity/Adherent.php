@@ -42,7 +42,7 @@ class Adherent
     /**
      * @var ArrayCollection $contrats
      *
-     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="adherents")
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="adherent")
      */
     private $contrats;
 
