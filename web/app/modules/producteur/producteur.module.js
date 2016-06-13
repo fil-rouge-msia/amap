@@ -64,7 +64,38 @@ producteur.controller('AddProducteurController', ['$scope', 'Restangular', '$sta
 
 producteur.controller('ViewProducteurController', ['$scope', 'Restangular', '$stateParams',
 function($scope, Restangular, $stateParams) {
+    $scope.isAdding = false;
+    $scope.produits = undefined;
+
     Restangular.one('producteurs', $stateParams.id).get().then(function(producteur) {
         $scope.producteur = producteur;
-    })
+    });
+
+    /**
+     * Affiche le formulaire d'ajout d'une offre produit
+     */
+    $scope.startAddOffer = function() {
+        $scope.isAdding = true;
+
+        if (!$scope.produits) {
+            Restangular.all('produits').getList().then(function(produits) {
+                $scope.produits = produits;
+            });
+        }
+    };
+
+    /**
+     * Annule l'ajout d'une offre produit
+     */
+    $scope.cancelAddOffer = function() {
+        $scope.isAdding = false;
+    };
+
+    /**
+     * Ajoute la nouvelle offre sélectionnée
+     */
+    $scope.sendAddOffer = function() {
+        var produit = $scope.selectedProduit;
+    }
+
 }]);
