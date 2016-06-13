@@ -26,6 +26,13 @@ adherent:
     options:
         expose: true
 
+contrat:
+    type: rest
+    resource: "@AppBundle/Controller/ContratsController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
 post:
     resource: "@AppBundle/Controller/AuthController.php"
     type:     annotation

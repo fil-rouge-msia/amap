@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Producteur
@@ -39,6 +40,18 @@ class Producteur
      * @ORM\ManyToOne(targetEntity="Amap", inversedBy="producteurs")
      */
     private $amap;
+
+    /**
+     * @var ArrayCollection $contrats
+     *
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="producteur")
+     */
+    private $contrats;
+
+    public function __construct()
+    {
+        $this->contrats = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -120,5 +133,39 @@ class Producteur
     public function getAmap()
     {
         return $this->amap;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Producteur
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }
