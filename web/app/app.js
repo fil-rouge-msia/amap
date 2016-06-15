@@ -1,7 +1,7 @@
 (function() {'use strict';
 
 	var app = angular.module('AmapApp', ['ui.router', 'restangular', 'angular-jwt', 'angular-storage',
-		'core', 'amap', 'produit', 'auth', 'adherent', 'producteur']); //Ajouter ici tous les modules
+		'core', 'amap', 'produit', 'auth', 'adherent', 'producteur', 'benevole']); //Ajouter ici tous les modules
 
 	//Mode HTML5
 	app.config(['$locationProvider',

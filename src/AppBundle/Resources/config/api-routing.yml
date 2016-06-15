@@ -33,6 +33,27 @@ contrat:
     options:
         expose: true
 
+reglement:
+    type: rest
+    resource: "@AppBundle/Controller/ReglementsController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
+methodereglement:
+    type: rest
+    resource: "@AppBundle/Controller/MethodesReglementsController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
+benevole:
+    type: rest
+    resource: "@AppBundle/Controller/BenevolesController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
 post:
     resource: "@AppBundle/Controller/AuthController.php"
     type:     annotation

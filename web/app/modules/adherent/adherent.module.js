@@ -20,6 +20,7 @@ adherent.controller('ListAdherentController', ['$scope', 'Restangular', function
 adherent.controller('EditAdherentController', ['$scope', 'Restangular', '$state', '$stateParams', function($scope, Restangular, $state, $stateParams) {
     Restangular.one('adherents', $stateParams.id).get().then(function(adherent){
         $scope.adherent = adherent;
+        $scope.adherent.contrats = undefined;
     });
 
     $scope.envoiAdherent= function(){
