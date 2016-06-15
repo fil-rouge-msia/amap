@@ -65,7 +65,8 @@ producteur.controller('AddProducteurController', ['$scope', 'Restangular', '$sta
 producteur.controller('ViewProducteurController', ['$scope', 'Restangular', '$stateParams',
 function($scope, Restangular, $stateParams) {
     $scope.isAdding = false;
-    $scope.produits = undefined;
+    $scope.allProduits = undefined;
+    $scope.filteredProduits = undefined;
 
     $scope.data = {
         selectedProduit : null
@@ -81,15 +82,10 @@ function($scope, Restangular, $stateParams) {
     $scope.startAddOffer = function() {
         $scope.isAdding = true;
 
-        if (!$scope.produits) {
+        if (!$scope.allProduits) {
             Restangular.all('produits').getList().then(function(produits) {
-                var ids = $scope.producteur.produits.map(function(el) {
-                    return el.id;
-                });
-
-                $scope.produits = produits.filter(function(el) {
-                    return ids.indexOf(el.id) === -1;
-                });
+                $scope.allProduits = produits;
+                filterProduits();
             });
         }
     };
@@ -112,13 +108,39 @@ function($scope, Restangular, $stateParams) {
             .one('produits', produit.id)
             .post(null, produit)
             .then(function(producteur) {
-                $scope.producteur.produits = producteur.produits;
+                $scope.producteur.produits.push(produit);
+                filterProduits();
                 $scope.isAdding = false;
             });
+    };
 
-        /*$scope.producteur.getList('produits', produit.id).then(function() {
-            console.log('ok');
-        })*/
+    /**
+     * Supprime une offre produit
+     * @param {Object} produit Produit à supprimer de la liste
+     */
+    $scope.deleteProduit = function(produit) {
+        Restangular
+            .one('producteurs', $scope.producteur.id)
+            .one('produits', produit.id)
+            .remove()
+            .then(function(producteur) {
+                $scope.producteur.produits = $scope.producteur.produits.filter(function(el) {
+                    return el.id !== produit.id;
+                });
+                filterProduits();
+            });
+    };
+
+    var filterProduits = function() {
+        if ($scope.allProduits) {
+            var ids = $scope.producteur.produits.map(function(el) {
+                return el.id;
+            });
+
+            $scope.filteredProduits = $scope.allProduits.filter(function(el) {
+                return ids.indexOf(el.id) === -1;
+            });
+        }
     }
 
 }]);

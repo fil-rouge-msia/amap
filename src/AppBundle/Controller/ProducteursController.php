@@ -69,6 +69,22 @@ class ProducteursController extends FOSRestController
         return $producteur;
     }
 
+    /**
+     * Supprime une offre de produit pour ce producteur
+     * @param  Producteur $producteur AppBundle\Entity\Producteur
+     * @param  Produit    $produit    Symfony\Component\HttpFoundation\Request
+     * 
+     * @return Object                 Réponse traduite en JSON
+     */
+    public function deleteProducteurProduitAction(Producteur $producteur, Produit $produit) {
+        $em = $this->getDoctrine()->getManager();
+
+        $producteur->removeProduit($produit);
+        $em->flush();
+
+        return $producteur;
+    }
+
     public function putProducteurAction(Request $request, $id)
     {
         $producteur = $this->getDoctrine()

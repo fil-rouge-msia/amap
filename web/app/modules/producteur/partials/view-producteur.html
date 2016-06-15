@@ -31,7 +31,7 @@
 				<form name="formProduit">
 					<div class="form-group" ng-class="{'has-error': formProduit.selectProduit.$invalid}">
 						<label for="selectProduit">Produit : </label>
-						<select name="selectProduit" id="selectProduit" class="form-control" data-ng-options="produit.libelle for produit in produits track by produit.id" data-ng-model="data.selectedProduit" required>
+						<select name="selectProduit" id="selectProduit" class="form-control" data-ng-options="produit.libelle for produit in filteredProduits track by produit.id" data-ng-model="data.selectedProduit" required>
 						</select>
 					</div>
 					<div class="panel-form-header-buttons">
@@ -45,7 +45,10 @@
 				</form>
 			</div>
 			<div class="panel-body">
-				<p data-ng-repeat="produit in producteur.produits">{{ produit.libelle }}</p>
+				<div data-ng-repeat="produit in producteur.produits">
+					<a href data-ng-click="deleteProduit(produit)" class="remove-link" title="Supprimer des offres produits"><span class="glyphicon glyphicon-remove-circle"></span></a>
+					<span>{{ produit.libelle }}</span>
+				</div>
 				<p data-ng-if="producteur.produits.length === 0" class="text-muted text-center">-- Aucune offre --</p>
 			</div>
 		</div>
