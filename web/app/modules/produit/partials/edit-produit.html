@@ -6,19 +6,19 @@
 	<form>
 		<fieldset class="form-group">
 			<label for="typeProduit">Type de produit</label>
-			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type">
+			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="libelle">Libellé</label>
-			<input type="text" class="form-control" id="libelle" ng-model="produit.libelle">
+			<input type="text" class="form-control" id="libelle" ng-model="produit.libelle" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="saison">Saison</label>
-			<input type="text" class="form-control" id="saison" ng-model="produit.saison">
+			<input type="text" class="form-control" id="saison" ng-model="produit.saison" required>
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="methode_agro">Méthode agronomique</label>
-			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique">
+			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique" required>
 		</fieldset>
 		<button type="submit" class="btn btn-primary">Modifier</button>
 	</form>

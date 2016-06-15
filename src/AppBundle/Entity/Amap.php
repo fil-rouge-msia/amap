@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Amap
@@ -54,6 +55,16 @@ class Amap
      */
     private $bancaire;
 
+    /**
+     * @var ArrayCollection $producteurs
+     * 
+     * @ORM\OneToMany(targetEntity="Producteur", mappedBy="amap")
+     */
+    private $producteurs;
+
+    public function __construct() {
+        $this->producteurs = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -173,5 +184,39 @@ class Amap
     public function getBancaire()
     {
         return $this->bancaire;
+    }
+
+    /**
+     * Add producteur
+     *
+     * @param \AppBundle\Entity\Producteur $producteur
+     *
+     * @return Amap
+     */
+    public function addProducteur(\AppBundle\Entity\Producteur $producteur)
+    {
+        $this->producteurs[] = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove producteur
+     *
+     * @param \AppBundle\Entity\Producteur $producteur
+     */
+    public function removeProducteur(\AppBundle\Entity\Producteur $producteur)
+    {
+        $this->producteurs->removeElement($producteur);
+    }
+
+    /**
+     * Get producteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducteurs()
+    {
+        return $this->producteurs;
     }
 }
