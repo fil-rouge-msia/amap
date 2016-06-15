@@ -49,6 +49,11 @@ class Produit
      */
     private $methodeAgronomique;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Producteur", mappedBy="produits")
+     */
+    private $producteurs;
+
 
     /**
      * Get id
@@ -155,5 +160,45 @@ class Produit
     {
         return $this->methodeAgronomique;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->producteurs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add producteur
+     *
+     * @param \AppBundle\Entity\Producteur $producteur
+     *
+     * @return Produit
+     */
+    public function addProducteur(\AppBundle\Entity\Producteur $producteur)
+    {
+        $this->producteurs[] = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove producteur
+     *
+     * @param \AppBundle\Entity\Producteur $producteur
+     */
+    public function removeProducteur(\AppBundle\Entity\Producteur $producteur)
+    {
+        $this->producteurs->removeElement($producteur);
+    }
+
+    /**
+     * Get producteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducteurs()
+    {
+        return $this->producteurs;
+    }
+}

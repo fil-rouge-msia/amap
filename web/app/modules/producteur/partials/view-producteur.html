@@ -31,21 +31,22 @@
 				<form name="formProduit">
 					<div class="form-group" ng-class="{'has-error': formProduit.selectProduit.$invalid}">
 						<label for="selectProduit">Produit : </label>
-						<select name="selectProduit" id="selectProduit" class="form-control" data-ng-options="produit.libelle for produit in produits track by produit.id" data-ng-model="selectedProduit" required>
+						<select name="selectProduit" id="selectProduit" class="form-control" data-ng-options="produit.libelle for produit in produits track by produit.id" data-ng-model="data.selectedProduit" required>
 						</select>
 					</div>
 					<div class="panel-form-header-buttons">
 						<a class="btn btn-danger btn-sm" data-ng-click="cancelAddOffer()">
 							<span class="glyphicon glyphicon-chevron-left"></span> Annuler
 						</a>
-						<a class="btn btn-primary btn-sm" data-ng-click="formProduit.$invalid || cancelAddOffer()" data-ng-disabled="formProduit.$invalid">
+						<a class="btn btn-primary btn-sm" data-ng-click="formProduit.$invalid || sendAddOffer()" data-ng-disabled="formProduit.$invalid">
 							<span class="glyphicon glyphicon-ok"></span> Valider
 						</a>
 					</div>
 				</form>
 			</div>
 			<div class="panel-body">
-				<p class="text-muted text-center">-- Aucune offre --</p>
+				<p data-ng-repeat="produit in producteur.produits">{{ produit.libelle }}</p>
+				<p data-ng-if="producteur.produits.length === 0" class="text-muted text-center">-- Aucune offre --</p>
 			</div>
 		</div>
 	</div>

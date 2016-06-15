@@ -67,6 +67,10 @@ function($scope, Restangular, $stateParams) {
     $scope.isAdding = false;
     $scope.produits = undefined;
 
+    $scope.data = {
+        selectedProduit : null
+    };
+
     Restangular.one('producteurs', $stateParams.id).get().then(function(producteur) {
         $scope.producteur = producteur;
     });
@@ -95,7 +99,13 @@ function($scope, Restangular, $stateParams) {
      * Ajoute la nouvelle offre sélectionnée
      */
     $scope.sendAddOffer = function() {
-        var produit = $scope.selectedProduit;
+        var produit = $scope.data.selectedProduit;
+
+        Restangular.one('producteurs', $scope.producteur.id).one('produits', produit.id).post(null, produit);
+
+        /*$scope.producteur.getList('produits', produit.id).then(function() {
+            console.log('ok');
+        })*/
     }
 
 }]);

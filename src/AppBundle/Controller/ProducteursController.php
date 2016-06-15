@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 use AppBundle\Entity\Producteur;
+use AppBundle\Entity\Produit;
 use AppBundle\Form\ProducteurType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -51,6 +52,23 @@ class ProducteursController extends FOSRestController
         $producteur = new Producteur();
         return $this->processForm($request, $producteur);
     }
+
+    /**
+     * Ajoute une offre de produit pour ce producteur
+     * @param  Producteur $producteur AppBundle\Entity\Producteur
+     * @param  Request    $request    Symfony\Component\HttpFoundation\Request
+     * 
+     * @return Object                 Réponse traduite en JSON
+     */
+    public function postProducteurProduitAction(Producteur $producteur, Produit $produit) {
+        $em = $this->getDoctrine()->getManager();
+
+        $producteur->addProduit($produit);
+        $em->flush();
+
+        return $producteur;
+    }
+
     public function putProducteurAction(Request $request, $id)
     {
         $producteur = $this->getDoctrine()
