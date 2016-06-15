@@ -83,7 +83,13 @@ function($scope, Restangular, $stateParams) {
 
         if (!$scope.produits) {
             Restangular.all('produits').getList().then(function(produits) {
-                $scope.produits = produits;
+                var ids = $scope.producteur.produits.map(function(el) {
+                    return el.id;
+                });
+
+                $scope.produits = produits.filter(function(el) {
+                    return ids.indexOf(el.id) === -1;
+                });
             });
         }
     };
@@ -101,7 +107,14 @@ function($scope, Restangular, $stateParams) {
     $scope.sendAddOffer = function() {
         var produit = $scope.data.selectedProduit;
 
-        Restangular.one('producteurs', $scope.producteur.id).one('produits', produit.id).post(null, produit);
+        Restangular
+            .one('producteurs', $scope.producteur.id)
+            .one('produits', produit.id)
+            .post(null, produit)
+            .then(function(producteur) {
+                $scope.producteur.produits = producteur.produits;
+                $scope.isAdding = false;
+            });
 
         /*$scope.producteur.getList('produits', produit.id).then(function() {
             console.log('ok');
