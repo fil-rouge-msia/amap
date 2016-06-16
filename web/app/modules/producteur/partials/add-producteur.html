@@ -5,11 +5,11 @@
 <div ng-controller="AddProducteurController" ng-submit="envoiProducteur()">
     <form>
         <fieldset class="form-group">
-            <label for="NomProducteur">Nom du producteur</label>
+            <label for="nomProducteur">Nom du producteur</label>
             <input type="text" class="form-control" id="nomProducteur" ng-model="producteur.nom_producteur" required>
         </fieldset>
         <fieldset class="form-group">
-            <label for="PrenomProducteur">Prénom du producteur</label>
+            <label for="prenomProducteur">Prénom du producteur</label>
             <input type="text" class="form-control" id="prenomProducteur" ng-model="producteur.prenom_producteur" required>
         </fieldset>
         <fieldset class="form-group">
@@ -19,6 +19,16 @@
                     ng-options="amap.nom for amap in amaps track by amap.id"
                     required>
                 <option value="">--Sélectionner une amap--</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="singleSelect">Offre de produits</label><br>
+            <select data-multiselect-dropdown 
+                    name="offreProduit" id="offreProduit" class="form-control"
+                    ng-model="producteur.produits"
+                    ng-options="produit.libelle for produit in produits track by produit.id"
+                    multiple="multiple" 
+                    data-placeholder="Sélectionner des produits">
             </select>
         </fieldset>
 

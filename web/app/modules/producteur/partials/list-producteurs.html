@@ -14,14 +14,14 @@
         <th>Actions</th>
         </thead>
         <tbody>
-        <tr data-ng-repeat="producteur in producteurs">
+        <tr data-ng-repeat="producteur in producteurs" data-ui-sref="producteurs.view({id: producteur.id})" style="cursor: pointer;">
             <td data-ng-bind="producteur.nom_producteur"></td>
             <td data-ng-bind="producteur.prenom_producteur"></td>
             <td data-ng-bind="producteur.amap.nom"></td>
             <td>
-                <a data-ui-sref="producteurs.edit({id:producteur.id})" class="btn btn-default"><i
+                <a data-ui-sref="producteurs.edit({id:producteur.id})" ng-click="$event.stopPropagation()" class="btn btn-default"><i
                         class="glyphicon glyphicon-pencil"></i></a>
-                <a class="btn btn-danger" href ng-click="delete(producteur)"><i
+                <a class="btn btn-danger" href ng-click="delete(producteur);$event.stopPropagation()"><i
                         class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>

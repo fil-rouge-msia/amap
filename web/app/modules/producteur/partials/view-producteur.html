@@ -1,0 +1,56 @@
+<div class="action-header row">
+    <h2 class="col-md-11">Fiche de {{ producteur.prenom_producteur }} {{ producteur.nom_producteur }}</h2>
+    <a class="btn btn-default" data-ui-sref="producteurs.edit({id: producteur.id})">
+    	<span class="glyphicon glyphicon-pencil"></span> Éditer
+    </a>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><strong>Amap</strong> : {{ producteur.amap.nom }}</h3>
+			</div>
+			<div class="panel-body">
+				Lieu : {{ producteur.amap.lieu }}<br/>
+				Adresse : {{ producteur.amap.adresse }}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<strong>Offres de produit</strong>
+					<a class="btn btn-default btn-xs" data-ng-disabled="isAdding" data-ng-click="isDisabled || startAddOffer()" style="float: right;">
+						<span class="glyphicon glyphicon-plus"></span> Ajouter
+					</a>
+				</h3>
+			</div>
+			<div data-ng-if="isAdding" class="panel-form-header">
+				<form name="formProduit">
+					<div class="form-group" ng-class="{'has-error': formProduit.selectProduit.$invalid}">
+						<label for="selectProduit">Produit : </label>
+						<select name="selectProduit" id="selectProduit" class="form-control" data-ng-options="produit.libelle for produit in filteredProduits track by produit.id" data-ng-model="data.selectedProduit" required>
+						</select>
+					</div>
+					<div class="panel-form-header-buttons">
+						<a class="btn btn-danger btn-sm" data-ng-click="cancelAddOffer()">
+							<span class="glyphicon glyphicon-chevron-left"></span> Annuler
+						</a>
+						<a class="btn btn-primary btn-sm" data-ng-click="formProduit.$invalid || sendAddOffer()" data-ng-disabled="formProduit.$invalid">
+							<span class="glyphicon glyphicon-ok"></span> Valider
+						</a>
+					</div>
+				</form>
+			</div>
+			<div class="panel-body">
+				<div data-ng-repeat="produit in producteur.produits">
+					<a href data-ng-click="deleteProduit(produit)" class="remove-link" title="Supprimer des offres produits"><span class="glyphicon glyphicon-remove-circle"></span></a>
+					<span>{{ produit.libelle }}</span>
+				</div>
+				<p data-ng-if="producteur.produits.length === 0" class="text-muted text-center">-- Aucune offre --</p>
+			</div>
+		</div>
+	</div>
+</div>

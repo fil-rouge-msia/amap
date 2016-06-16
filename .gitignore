@@ -20,3 +20,4 @@
 .idea/
 /web/scripts/vendor.js
 /web/styles/application.css
+*.cache

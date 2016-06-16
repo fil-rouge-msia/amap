@@ -48,11 +48,16 @@ class Producteur
      */
     private $contrats;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Produit", inversedBy="producteurs")
+     */
+    private $produits;
+
     public function __construct()
     {
         $this->contrats = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -151,6 +156,20 @@ class Producteur
     }
 
     /**
+     * Add produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     *
+     * @return Producteur
+     */
+    public function addProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits[] = $produit;
+
+        return $this;
+    }
+
+    /**
      * Remove contrat
      *
      * @param \AppBundle\Entity\Contrat $contrat
@@ -168,5 +187,25 @@ class Producteur
     public function getContrats()
     {
         return $this->contrats;
+    }
+
+    /**
+     * Remove produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     */
+    public function removeProduit(\AppBundle\Entity\Produit $produit)
+    {
+        $this->produits->removeElement($produit);
+    }
+
+    /**
+     * Get produits
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProduits()
+    {
+        return $this->produits;
     }
 }
