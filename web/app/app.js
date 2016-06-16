@@ -20,7 +20,7 @@
 					delete retElem.id; //retire l'identifiant de l'objet, déjà présent sur l'url
 				}
 		    	var wrapper = {};
-		    	wrapper[what.substring(0, what.length -1)] = elem; 
+		    	wrapper[what.substring(0, what.length -1)] = elem;
 		    	retElem = wrapper;
 			}
 			return retElem;
