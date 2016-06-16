@@ -5,7 +5,7 @@
 <div ng-controller="AddBenevoleController" ng-submit="envoiBenevole()">
     <form>
         <fieldset class="form-group">
-            <label for="singleSelect">Adhérent liée</label><br>
+            <label for="singleSelect">Adhérent lié</label><br>
             <select name="singleSelect" id="singleSelect" class="form-control"
                     ng-model="benevole.adherent"
                     ng-options="adherent.nom +' '+ adherent.prenom for adherent in adherents track by adherent.id"
