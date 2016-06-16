@@ -1,0 +1,33 @@
+<div class="action-header row">
+    <h2 class="col-md-11">Ajout d'un bénévole</h2>
+</div>
+
+<div ng-controller="AddBenevoleController" ng-submit="envoiBenevole()">
+    <form>
+        <fieldset class="form-group">
+            <label for="singleSelect">Adhérent lié</label><br>
+            <select name="singleSelect" id="singleSelect" class="form-control"
+                    ng-model="benevole.adherent"
+                    ng-options="adherent.nom +' '+ adherent.prenom for adherent in adherents track by adherent.id"
+                    required>
+                <option value="">--Sélectionner un adhérent--</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="PosteBenevole">Poste du bénévole</label>
+            <input type="text" class="form-control" id="PosteBenevole" ng-model="benevole.poste_benevole" required>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="singleSelect">Amap liée</label><br>
+            <select name="singleSelect" id="singleSelect2" class="form-control"
+                    ng-model="benevole.amap"
+                    ng-options="amap.nom for amap in amaps track by amap.id"
+                    required>
+                <option value="">--Sélectionner une amap--</option>
+            </select>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+
+
+    </form>
+</div>

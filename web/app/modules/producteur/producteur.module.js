@@ -23,6 +23,7 @@ produit.controller('EditProducteurController', ['$scope', 'Restangular', '$state
 
         $scope.producteur = producteur;
         $scope.envoiProducteur = function () {
+            $scope.producteur.contrats = undefined;
             $scope.producteur.amap = $scope.producteur.amap.id;
             $scope.producteur.put();
             $state.go('producteurs.list');

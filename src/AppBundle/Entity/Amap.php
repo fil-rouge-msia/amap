@@ -69,6 +69,13 @@ class Amap
      */
     private $contrats;
 
+    /**
+     * @var ArrayCollection $benevoles
+     *
+     * @ORM\OneToMany(targetEntity="Benevole", mappedBy="amap")
+     */
+    private $benevoles;
+
     public function __construct() {
         $this->producteurs = new ArrayCollection();
         $this->contrats = new ArrayCollection();
@@ -260,5 +267,39 @@ class Amap
     public function getContrats()
     {
         return $this->contrats;
+    }
+
+    /**
+     * Add benevole
+     *
+     * @param \AppBundle\Entity\Benevole $benevole
+     *
+     * @return Amap
+     */
+    public function addBenevole(\AppBundle\Entity\Benevole $benevole)
+    {
+        $this->benevoles[] = $benevole;
+
+        return $this;
+    }
+
+    /**
+     * Remove benevole
+     *
+     * @param \AppBundle\Entity\Benevole $benevole
+     */
+    public function removeBenevole(\AppBundle\Entity\Benevole $benevole)
+    {
+        $this->benevoles->removeElement($benevole);
+    }
+
+    /**
+     * Get benevoles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBenevoles()
+    {
+        return $this->benevoles;
     }
 }
