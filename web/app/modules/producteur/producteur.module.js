@@ -51,8 +51,19 @@ producteur.controller('AddProducteurController', ['$scope', 'Restangular', '$sta
         $scope.amaps = amaps;
     });
 
+    Restangular.all('produits').getList().then(function(produits) {
+        $scope.produits = produits;
+    });
+
     $scope.envoiProducteur = function () {
         $scope.producteur.amap = $scope.producteur.amap.id;
+
+        if ($scope.producteur.produits) {
+            $scope.producteur.produits = $scope.producteur.produits.map(function(el) {
+                return el.id;
+            });
+        }
+
         baseProducteurs.post($scope.producteur).then(function (producteur) {
             $state.go('producteurs.view', {
                 id: producteur.id
