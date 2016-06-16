@@ -8,7 +8,7 @@ amap.controller('ListController', ['$scope', 'Restangular', function($scope, Res
 	baseAmaps.getList().then(function(amaps) {
 		$scope.amaps = amaps;
 	});
-        
+
         $scope.delete = function(amap) {
 		amap.remove().then(function(){
 			var idAmap = $scope.amaps.indexOf(amap);
@@ -22,7 +22,7 @@ amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', 
             $scope.amap = amap;
             $scope.amap.producteurs = undefined;
         });
-        
+
         $scope.envoiAmap= function(){
             $scope.amap.put().then(function(){
                 $state.go('amaps.list');
@@ -33,11 +33,11 @@ amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', 
 amap.controller('AddAmapController', ['$scope', 'Restangular', '$state', function($scope, Restangular, $state) {
         var baseAmap = Restangular.all('amaps');
         $scope.envoiAmap = {};
-        
+
         $scope.envoiAmap= function(){
             baseAmap.post($scope.amap).then(function() {
                 $state.go('amaps.list');
             });
-                 
+
         };
 }]);
