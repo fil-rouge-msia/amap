@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Adherent
@@ -38,11 +39,25 @@ class Adherent
      */
     private $prenom;
 
+
+    /**
+     * @var ArrayCollection $contrats
+     *
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="adherent")
+     */
+    private $contrats;
+
+    public function __construct()
+    {
+        $this->contrats = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
      * @return integer
      */
+
     public function getId()
     {
         return $this->id;
@@ -94,5 +109,39 @@ class Adherent
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Add contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     *
+     * @return Adherent
+     */
+    public function addContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats[] = $contrat;
+
+        return $this;
+    }
+
+    /**
+     * Remove contrat
+     *
+     * @param \AppBundle\Entity\Contrat $contrat
+     */
+    public function removeContrat(\AppBundle\Entity\Contrat $contrat)
+    {
+        $this->contrats->removeElement($contrat);
+    }
+
+    /**
+     * Get contrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContrats()
+    {
+        return $this->contrats;
     }
 }
