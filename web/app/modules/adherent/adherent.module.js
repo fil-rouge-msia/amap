@@ -35,7 +35,7 @@ adherent.controller('AddAdherentController', ['$scope', 'Restangular', '$state',
     $scope.adherent = {};
 
     $scope.envoiAdherent= function(){
-        baseAdherents.post($scope.produit).then(function() {
+        baseAdherents.post($scope.adherent).then(function() {
             $state.go('adherents.list');
         });
     };

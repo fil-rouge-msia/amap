@@ -12,9 +12,16 @@ produit:
     options:
         expose: true
 
-adherant:
+producteur:
     type: rest
-    resource: "@AppBundle/Controller/AdherantsController.php"
+    resource: "@AppBundle/Controller/ProducteursController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
+adherent:
+    type: rest
+    resource: "@AppBundle/Controller/AdherentsController.php"
     name_prefix:  api_
     options:
         expose: true

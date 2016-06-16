@@ -4,9 +4,9 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Adherant;
+use AppBundle\Entity\Adherent;
 
-class AdherantType extends ApiType
+class AdherentType extends ApiType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -21,6 +21,6 @@ class AdherantType extends ApiType
     }
 
     public function getEntity() {
-        return Adherant::class;
+        return Adherent::class;
     }
 }
