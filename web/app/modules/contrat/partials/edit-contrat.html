@@ -1,0 +1,26 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Modification d'un contrat</h2>
+</div>
+
+<div ng-controller="EditContratController" ng-submit="envoiProduit()">
+	<form>
+		<fieldset class="form-group">
+			<label for="typeProduit">Type de produit</label>
+			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type">
+		</fieldset>
+		<fieldset class="form-group">
+			<label for="libelle">Libellé</label>
+			<input type="text" class="form-control" id="libelle" ng-model="produit.libelle">
+		</fieldset>
+		<fieldset class="form-group">
+			<label for="saison">Saison</label>
+			<input type="text" class="form-control" id="saison" ng-model="produit.saison">
+		</fieldset>
+		<fieldset class="form-group">
+			<label for="methode_agro">Méthode agronomique</label>
+			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique">
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
+</div>
+

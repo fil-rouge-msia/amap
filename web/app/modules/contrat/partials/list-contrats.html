@@ -1,0 +1,30 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Liste</h2>
+	<div class="actions col-md-1">
+		<a data-ui-sref="contrats.add_contrat" href class="btn btn-primary">Ajouter</a>
+	</div>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped">
+		<thead>
+			<th>Type produit</th>
+			<th>Libellé</th>
+			<th>Saison</th>
+			<th>Méthode agronomique</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="produit in produits">
+	  			<td data-ng-bind="produit.type"></td>
+	  			<td data-ng-bind="produit.libelle"></td>
+	  			<td data-ng-bind="produit.saison"></td>
+	  			<td data-ng-bind="produit.methode_agronomique"></td>
+	  			<td>
+					<a data-ui-sref="contrats.edit({id:contrat.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a class="btn btn-danger" href ng-click ="delete(contrat)"><i class="glyphicon glyphicon-trash"></i></a>
+	  			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
