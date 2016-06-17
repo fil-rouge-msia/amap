@@ -1,30 +1,32 @@
 <div class="action-header row">
-    <h2 class="col-md-11">Liste</h2>
-    <div class="actions col-md-1">
-        <a data-ui-sref="benevoles.add_benevole" href class="btn btn-primary">Ajouter</a>
-    </div>
+	<h2 class="col-md-11">Liste</h2>
+	<div class="actions col-md-1">
+		<a data-ui-sref="benevoles.add_benevole" href class="btn btn-primary">Ajouter</a>
+	</div>
 </div>
 
 <div class="table-responsive">
-    <table class="table table-hover table-striped">
-        <thead>
-        <th>Adhérent lié</th>
-        <th>Amap liée</th>
-        <th>Poste</th>
-        <th>Actions</th>
-        </thead>
-        <tbody>
-        <tr data-ng-repeat="benevole in benevoles">
-            <td data-ng-bind="benevole.adherent.nom +' '+ benevole.adherent.prenom"></td>
-            <td data-ng-bind="benevole.amap.nom"></td>
-            <td data-ng-bind="benevole.poste_benevole"></td>
-            <td>
-                <a data-ui-sref="benevoles.edit({id:benevole.id})" class="btn btn-default"><i
-                        class="glyphicon glyphicon-pencil"></i></a>
-                <a class="btn btn-danger" href ng-click="delete(benevole)"><i
-                        class="glyphicon glyphicon-trash"></i></a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+	<table class="table table-hover table-striped">
+		<thead>
+			<th>Adhérent lié</th>
+			<th>Amap liée</th>
+			<th>Poste</th>
+			<th class="text-right">Actions</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="benevole in benevoles">
+				<td data-ng-bind="benevole.adherent.nom +' '+ benevole.adherent.prenom"></td>
+				<td data-ng-bind="benevole.amap.nom"></td>
+				<td data-ng-bind="benevole.poste_benevole"></td>
+				<td class="text-right">
+					<a data-ui-sref="benevoles.edit({id:benevole.id})" class="btn btn-default btn-xs">
+						<i class="glyphicon glyphicon-pencil"></i>
+					</a>
+					<a class="btn btn-danger btn-xs" href ng-click="delete(benevole)">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
