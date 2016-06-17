@@ -46,6 +46,11 @@ class Stock
     private $producteur;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Amap", inversedBy="stocks")
+     */
+    private $amap;
+
+    /**
      * Get id
      *
      * @return int
@@ -149,6 +154,30 @@ class Stock
     public function getProducteur()
     {
         return $this->producteur;
+    }
+
+    /**
+     * Set amap
+     *
+     * @param \AppBundle\Entity\Amap $amap
+     *
+     * @return Amap
+     */
+    public function setAmap(\AppBundle\Entity\Amap $amap = null)
+    {
+        $this->amap = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \AppBundle\Entity\Amap
+     */
+    public function getAmap()
+    {
+        return $this->amap;
     }
 }
 

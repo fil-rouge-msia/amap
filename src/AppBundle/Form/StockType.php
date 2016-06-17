@@ -17,6 +17,7 @@ class StockType extends ApiType
             ->add('quantite_produit')
             ->add('emballage')
             ->add('producteur')
+            ->add('amap')
             ->add('produit');
     }
 

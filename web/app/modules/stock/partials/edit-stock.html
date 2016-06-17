@@ -1,0 +1,23 @@
+<div class="action-header row">
+    <h2 class="col-md-11">Modification d'un stock</h2>
+</div>
+
+<div ng-submit="envoiStock()">
+            <form>
+                <fieldset class="form-group">
+                    <label for="singleSelect1">Produit lié</label><br>
+                    <select name="singleSelect" id="singleSelect1" class="form-control"
+                            ng-model="stock.produit"
+                            ng-options="produit.libelle for produit in produits track by produit.id"
+                            required>
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="qte">Quantité</label>
+                    <input type="text" class="form-control" id="qte" ng-model="stock.quantite_produit" required>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </form>
+        </div>
+
+
