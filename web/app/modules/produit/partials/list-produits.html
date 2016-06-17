@@ -12,7 +12,7 @@
 			<th>Libellé</th>
 			<th>Saison</th>
 			<th>Méthode agronomique</th>
-			<th>Actions</th>
+			<th class="text-right">Actions</th>
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="produit in produits">
@@ -20,9 +20,13 @@
 	  			<td data-ng-bind="produit.libelle"></td>
 	  			<td data-ng-bind="produit.saison"></td>
 	  			<td data-ng-bind="produit.methode_agronomique"></td>
-	  			<td>
-					<a data-ui-sref="produits.edit({id:produit.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-					<a class="btn btn-danger" href ng-click ="delete(produit)"><i class="glyphicon glyphicon-trash"></i></a>
+	  			<td class="text-right">
+					<a data-ui-sref="produits.edit({id:produit.id})" class="btn btn-default btn-xs" title="Éditer">
+						<i class="glyphicon glyphicon-pencil"></i>
+					</a>
+					<a class="btn btn-danger btn-xs" href ng-click ="delete(produit)" title="Supprimer">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
 	  			</td>
 			</tr>
 		</tbody>
