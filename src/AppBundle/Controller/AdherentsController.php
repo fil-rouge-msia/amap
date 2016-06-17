@@ -4,6 +4,8 @@ use AppBundle\Entity\Adherent;
 use AppBundle\Form\AdherentType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Request\ParamFetcher;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,15 +16,33 @@ class AdherentsController extends FOSRestController
 {
     /**
      * Retourne la liste de tous les adhérents
+     * @QueryParam(name="benevole", default="true")
      * @return array Liste des adhérents
      */
-    public function getAdherentsAction()
+    public function getAdherentsAction(ParamFetcher $paramFetcher)
     {
+        $repo = $this->getDoctrine()
+            ->getRepository('AppBundle:Adherent');
+
+        if ($paramFetcher->get('benevole') === 'true') {
+            return $repo->findAll();
+        }
+        else {
+            return $repo->findNotBenevole();
+        }
+    }
+
+    /**
+     * Retourne la liste des adhérents non bénévoles
+     * @return array Liste des adhérents non bénévoles
+     */
+    public function not_benevoleAdherentsAction() {
         $adherents = $this->getDoctrine()
             ->getRepository('AppBundle:Adherent')
-            ->findAll();
+            ->findNotBenevole();
         return $adherents;
     }
+
     /**
      * Retourne un adherent
      * @param  Adherent $adherent

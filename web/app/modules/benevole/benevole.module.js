@@ -49,7 +49,7 @@ benevole.controller('AddBenevoleController', ['$scope', 'Restangular', '$state',
         $scope.amaps = amaps;
     });
 
-    baseAdherents.getList().then(function (adherents) {
+    baseAdherents.getList({benevole: false}).then(function (adherents) {
         $scope.adherents = adherents;
     });
 
