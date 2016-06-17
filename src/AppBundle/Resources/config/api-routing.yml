@@ -54,6 +54,13 @@ benevole:
     options:
         expose: true
 
+stock:
+    type: rest
+    resource: "@AppBundle/Controller/StocksController.php"
+    name_prefix:  api_
+    options:
+        expose: true
+
 post:
     resource: "@AppBundle/Controller/AuthController.php"
     type:     annotation
