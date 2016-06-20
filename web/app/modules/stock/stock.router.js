@@ -13,17 +13,17 @@ stock.config(['$stateProvider', function ($stateProvider) {
                 controller: 'ListStockController'
             })
 
-        .state('stocks.add_stockProducteur',
+        .state('stocks.add_stock-producteur',
             {
-                url: '/add',
-                templateUrl: 'app/modules/stock/partials/add-stockProducteur.html',
+                url: '/addProducteur',
+                templateUrl: 'app/modules/stock/partials/add-stock-producteur.html',
                 controller: 'AddStockController'
             })
 
-        .state('stocks.add_stockAmap',
+        .state('stocks.add_stock-amap',
             {
-                url: '/add',
-                templateUrl: 'app/modules/stock/partials/add-stockAmap.html',
+                url: '/addAmap',
+                templateUrl: 'app/modules/stock/partials/add-stock-amap.html',
                 controller: 'AddStockController'
             })
         .state('stocks.edit',
