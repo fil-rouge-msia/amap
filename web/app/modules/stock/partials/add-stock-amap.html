@@ -1,0 +1,33 @@
+        <h3>Amap</h3>
+        <div ng-controller="AddStockController" ng-submit="envoiStockAmap()">
+            <form>
+                <fieldset class="form-group">
+                    <label for="singleSelectProduit2">Produit lié</label><br>
+                    <select name="singleSelect" id="singleSelectProduit2" class="form-control"
+                            ng-model="stock.produit"
+                            ng-options="produit.libelle for produit in produits track by produit.id"
+                            required>
+                        <option value="">--Sélectionner un produit--</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="quantite_produit2">Quantité</label>
+                    <input type="number" class="form-control" id="quantite_produit2" ng-model="stock.quantite_produit"
+                           required>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="singleSelectAmap">Amap liée</label><br>
+                    <select name="singleSelect" id="singleSelectAmap" class="form-control"
+                            ng-model="stock.amap"
+                            ng-options="amap.nom for amap in amaps track by amap.id"
+                            required>
+                        <option value="">--Sélectionner une amap--</option>
+                    </select>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                <button type="button" class="btn btn-primary" data-ui-sref="stocks.list">Retour</button>
+            </form>
+        </div>
+
+
+

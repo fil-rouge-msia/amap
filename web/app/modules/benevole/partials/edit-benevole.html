@@ -9,13 +9,14 @@
             <input type="text" class="form-control" id="nomPoste" ng-model="benevole.poste_benevole" required>
         </fieldset>
         <fieldset class="form-group">
-            <label for="singleSelect">Amap liée</label><br>
+            <label for="singleSelect2">Amap liée</label><br>
             <select name="singleSelect" id="singleSelect2" class="form-control"
                     ng-model="benevole.amap"
                     ng-options="amap.nom for amap in amaps track by amap.id" required>
             </select>
         </fieldset>
         <button type="submit" class="btn btn-primary">Modifier</button>
+        <button type="button" class="btn btn-primary" data-ui-sref="benevoles.list">Retour</button>
     </form>
 </div>
 
