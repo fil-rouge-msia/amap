@@ -76,6 +76,13 @@ class Amap
      */
     private $benevoles;
 
+    /**
+     * @var ArrayCollection $stocks
+     *
+     * @ORM\OneToMany(targetEntity="Stock", mappedBy="amap")
+     */
+    private $stocks;
+
     public function __construct() {
         $this->producteurs = new ArrayCollection();
         $this->contrats = new ArrayCollection();
@@ -301,5 +308,39 @@ class Amap
     public function getBenevoles()
     {
         return $this->benevoles;
+    }
+
+    /**
+     * Add stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     *
+     * @return Amap
+     */
+    public function addStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stocks[] = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Remove stock
+     *
+     * @param \AppBundle\Entity\Stock $stock
+     */
+    public function removeStock(\AppBundle\Entity\Stock $stock)
+    {
+        $this->stocks->removeElement($stock);
+    }
+
+    /**
+     * Get stocks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStocks()
+    {
+        return $this->stocks;
     }
 }

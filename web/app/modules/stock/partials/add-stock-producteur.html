@@ -1,0 +1,33 @@
+<h3>Producteur</h3>
+<div ng-controller="AddStockController" ng-submit="envoiStockProducteur()">
+    <form>
+        <fieldset class="form-group">
+            <label for="singleSelectProduit">Produit lié</label><br>
+            <select name="singleSelect3" id="singleSelectProduit" class="form-control"
+                    ng-model="stock.produit"
+                    ng-options="produit.libelle for produit in produits track by produit.id"
+                    required>
+                <option value="">--Sélectionner un produit--</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="quantite_produit">Quantité</label>
+            <input type="number" class="form-control" id="quantite_produit" ng-model="stock.quantite_produit"
+                   required>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="singleSelectProducteur">Producteur lié</label><br>
+            <select name="singleSelect" id="singleSelectProducteur" class="form-control"
+                    ng-model="stock.producteur"
+                    ng-options="producteur.nom_producteur for producteur in producteurs track by producteur.id"
+                    required>
+                <option value="">--Sélectionner un producteur--</option>
+            </select>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="button" class="btn btn-primary" data-ui-sref="stocks.list">Retour</button>
+    </form>
+</div>
+
+
+

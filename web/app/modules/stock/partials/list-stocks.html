@@ -1,0 +1,63 @@
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#amap">Amap</a></li>
+    <li><a data-toggle="tab" href="#producteur">Producteur</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="amap" class="tab-pane fade in active">
+        <h3>Amap<a style="float:right" data-ui-sref="stocks.add_stock-amap" href class="btn btn-primary">Ajouter</a>
+        </h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                <th>Amap liée</th>
+                <th>Produit lié</th>
+                <th>Quantite</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="stock in stocks" ng-show="stock.amap.nom != null">
+                    <td data-ng-bind="stock.amap.nom"></td>
+                    <td data-ng-bind="stock.produit.libelle"></td>
+                    <td data-ng-bind="stock.quantite_produit"></td>
+                    <td>
+                        <a data-ui-sref="stocks.edit({id:stock.id})" class="btn btn-default"><i
+                                class="glyphicon glyphicon-pencil"></i></a>
+                        <a class="btn btn-danger" href ng-click="delete(stock)"><i
+                                class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="producteur" class="tab-pane fade">
+        <h3>Producteur<a style="float:right" data-ui-sref="stocks.add_stock-producteur" href class="btn btn-primary">Ajouter</a>
+        </h3>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                <th>Producteur lié</th>
+                <th>Produit lié</th>
+                <th>Quantite</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="stock in stocks" ng-show="stock.producteur.nom_producteur != null">
+                    <td data-ng-bind="stock.producteur.nom_producteur"></td>
+                    <td data-ng-bind="stock.produit.libelle"></td>
+                    <td data-ng-bind="stock.quantite_produit"></td>
+                    <td>
+                        <a data-ui-sref="stocks.edit({id:stock.id})" class="btn btn-default"><i
+                                class="glyphicon glyphicon-pencil"></i></a>
+                        <a class="btn btn-danger" href ng-click="delete(stock)"><i
+                                class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
