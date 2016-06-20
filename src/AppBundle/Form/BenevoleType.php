@@ -3,10 +3,9 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Producteur;
+use AppBundle\Entity\Benevole;
 
-class ProducteurType extends ApiType
+class BenevoleType extends ApiType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,14 +14,13 @@ class ProducteurType extends ApiType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom_producteur')
-            ->add('prenom_producteur')
+            ->add('poste_benevole')
             ->add('amap')
-            ->add('produits')
-        ;
+            ->add('adherent');
     }
 
-    public function getEntity() {
-        return Producteur::class;
+    public function getEntity()
+    {
+        return Benevole::class;
     }
 }

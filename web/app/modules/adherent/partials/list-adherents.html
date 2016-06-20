@@ -10,15 +10,19 @@
 		<thead>
 			<th>Nom</th>
 			<th>Prénom</th>
-			<th>Actions</th>
+			<th class="text-right">Actions</th>
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="adherent in adherents">
 	  			<td data-ng-bind="adherent.nom"></td>
 	  			<td data-ng-bind="adherent.prenom"></td>
-	  			<td>
-					<a data-ui-sref="adherents.edit({id:adherent.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-					<a class="btn btn-danger" href ng-click ="delete(adherent)"><i class="glyphicon glyphicon-trash"></i></a>
+	  			<td class="text-right">
+					<a data-ui-sref="adherents.edit({id:adherent.id})" class="btn btn-default btn-xs">
+						<i class="glyphicon glyphicon-pencil"></i>
+					</a>
+					<a class="btn btn-danger btn-xs" href ng-click ="delete(adherent)">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
 	  			</td>
 			</tr>
 		</tbody>

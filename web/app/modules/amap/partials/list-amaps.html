@@ -12,7 +12,7 @@
 			<th>Lieu</th>
 			<th>Adresse</th>
 			<th>Bancaire</th>
-			<th>Actions</th>
+			<th class="text-right">Actions</th>
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="amap in amaps">
@@ -20,9 +20,13 @@
 	  			<td data-ng-bind="amap.lieu"></td>
 	  			<td data-ng-bind="amap.adresse"></td>
 	  			<td data-ng-bind="amap.bancaire"></td>
-	  			<td>
-	  				<a data-ui-sref="amaps.edit({id:amap.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
-	  				<a class="btn btn-danger" href ng-click ="delete(amap)"><i class="glyphicon glyphicon-trash"></i></a>
+	  			<td class="text-right">
+	  				<a data-ui-sref="amaps.edit({id:amap.id})" class="btn btn-default btn-xs">
+	  					<i class="glyphicon glyphicon-pencil"></i>
+	  				</a>
+	  				<a class="btn btn-danger btn-xs" href ng-click ="delete(amap)">
+	  					<i class="glyphicon glyphicon-trash"></i>
+	  				</a>
 	  			</td>
 			</tr>
 		</tbody>

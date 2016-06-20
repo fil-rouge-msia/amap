@@ -21,6 +21,8 @@ amap.controller('EditAmapController', ['$scope', 'Restangular', '$stateParams', 
         Restangular.one('amaps', $stateParams.id).get().then(function(amap){
             $scope.amap = amap;
             $scope.amap.producteurs = undefined;
+            $scope.amap.benevoles = undefined;
+            $scope.amap.contrats = undefined;
         });
 
         $scope.envoiAmap= function(){

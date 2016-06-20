@@ -24,6 +24,8 @@
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 .nav-sidebar > li > a.active,
@@ -31,6 +33,16 @@
 .nav-sidebar > li > a.active:focus {
   color: #fff;
   background-color: #428bca;
+}
+
+.nav-group {
+  margin: 0 0 20px 0;
+}
+
+.nav-group > li > a{
+  padding-left: 30px;
+  text-transform: initial;
+  letter-spacing: initial;
 }
 
 .login-navbar
@@ -64,4 +76,31 @@
 
 .login .pass-lost {
   margin-top: 20px;
+}
+
+.form-add-offre {
+  border: 1px solid black;
+}
+
+.panel-form-header {
+  background-color: rgb(221, 221, 221);
+  padding: 5px;
+}
+
+.panel-form-header-buttons {
+  text-align: center;
+}
+
+.remove-link {
+  color: #e90000;
+}
+
+.remove-link:hover {
+  color: #ba0000;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
 }

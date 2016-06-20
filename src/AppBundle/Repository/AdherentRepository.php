@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class AdherentRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findNotBenevole() {
+		return $this->getEntityManager()
+			->createQuery(
+				'SELECT a FROM AppBundle:Adherent a WHERE a.id NOT IN(SELECT b.id FROM AppBundle:Benevole b)'
+			)
+			->getResult();
+	}
 }
