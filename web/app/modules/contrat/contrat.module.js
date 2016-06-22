@@ -28,11 +28,40 @@ contrat.controller('EditContratController', ['$scope', 'Restangular', '$state', 
 }]);
 
 contrat.controller('AddContratController', ['$scope', 'Restangular', '$state', function($scope, Restangular, $state) {
-    var baseContrats = Restangular.all('contrats');
+    var baseContrats = Restangular.all('contrats'),
+        baseAmaps = Restangular.all('amaps'),
+        baseAdherents = Restangular.all('adherents'),
+        baseProducteurs = Restangular.all('producteurs');
 
-    $scope.contrat = {};
+        $scope.contrat = {};
+    $scope.data = {
+        option: "amap",
+        models: {
+            amap: null,
+            producteur: null,
+            adherent:null
+        }
+    };
+
+    baseAmaps.getList().then(function (amaps) {
+        $scope.data.models.amap = amaps;
+    });
+
+    baseAdherents.getList({benevole: false}).then(function (adherents) {
+        $scope.data.models.adherent = adherents;
+    });
+    
+    baseProducteurs.getList().then(function (producteurs) {
+            $scope.data.models.producteur = producteurs;
+    });
+
+
 
     $scope.envoiContrat= function(){
+        $scope.contrat.amap = data.option;
+        $scope.contrat.producteur = data.option;
+        $scope.contrat.adherent = data.option;
+               
         baseContrats.post($scope.contrat).then(function() {
             $state.go('contrats.list');
         });

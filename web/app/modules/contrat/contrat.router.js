@@ -13,7 +13,7 @@ contrat.config(['$stateProvider', function ($stateProvider) {
                 controller: 'ListContratController'
             })
 
-        .state('contrats.add_produit',
+        .state('contrats.add_contrat',
             {
                 url: '/add',
                 templateUrl: 'app/modules/contrat/partials/add-contrat.html',

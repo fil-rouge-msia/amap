@@ -5,28 +5,27 @@
 <div ng-controller="EditContratController" ng-submit="envoiContrat()">
 	<form>
             
-                <label for="mySelect">Amap:</label>
-                <select name="mySelect" id="mySelect"
-                ng-options="amap.nom for option in amaps track by amap.id"
-                ></select>
-            
-		<fieldset class="form-group">
-			<label for="typeProduit">Type de produit</label>
-			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type">
+                <fieldset class="form-group">
+			<label for="date_debut">Début</label>
+			<input type="date" class="form-control" id="date_debut" ng-model="contrat.date_debut">
 		</fieldset>
 		<fieldset class="form-group">
-			<label for="libelle">Libellé</label>
-			<input type="text" class="form-control" id="libelle" ng-model="produit.libelle">
+			<label for="date_fin">Fin</label>
+			<input type="date" class="form-control" id="date_fin" ng-model="contrat.date_fin">
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="saison">Saison</label>
-			<input type="text" class="form-control" id="saison" ng-model="produit.saison">
+			<input type="text" class="form-control" id="saison" ng-model="contrat.saison">
 		</fieldset>
 		<fieldset class="form-group">
-			<label for="methode_agro">Méthode agronomique</label>
-			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique">
+			<label for="part_recolte">Part récolte</label>
+			<input type="text" class="form-control" id="part_recolte" ng-model="contrat.part_recolte">
 		</fieldset>
-		<button type="submit" class="btn btn-primary">Modifier</button>
+                <fieldset class="form-group">
+			<label for="montant_part">Montant part</label>
+			<input type="text" class="form-control" id="montant_part" ng-model="contrat.montant_part">
+		</fieldset>
+		<button type="submit" class="btn btn-primary">Moodifier</button>
 	</form>
 </div>
 

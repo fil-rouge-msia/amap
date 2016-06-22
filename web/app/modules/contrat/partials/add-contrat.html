@@ -5,21 +5,56 @@
 <div ng-controller="AddContratController" ng-submit="envoiContrat()">
 <form>
     
+    
+                <fieldset class="form-radio">
+                    <p>Signataire n°1</p>
+			<label for="radio1">Amap</label>
+			<input type="radio" class="radio-inline" ng-model="data.option1" name="radio1" value="amap">
+                        <label for="radio1">Adhérent</label>
+			<input type="radio" class="radio-inline" ng-model="data.option1" name="radio1" value="adherent">
+                        <label for="radio1">Producteur</label>
+			<input type="radio" class="radio-inline" ng-model="data.option1" name="radio1" value="producteur">
+		</fieldset>
+                <fieldset class="form-group">
+                    <select name="singleSelect1" id="singleSelect1" class="form-control"
+                        ng-model="data.selected" ng-options="item.nom + item.nom_producteur for item in data.models[data.option] track by item.id" required>
+                    <option value="">--Sélectionner un signataire--</option>
+                    </select>
+                </fieldset>
+    <fieldset class="form-radio">
+                    <p>Signataire n°2</p>
+			<label for="radio2">Amap</label>
+			<input type="radio" class="radio-inline" ng-model="data.option2" name="radio2" value="amap">
+                        <label for="radio2">Adhérent</label>
+			<input type="radio" class="radio-inline" ng-model="data.option2" name="radio2" value="adherent">
+                        <label for="radio2">Producteur</label>
+			<input type="radio" class="radio-inline" ng-model="data.option2" name="radio2" value="producteur">
+		</fieldset>
+                <fieldset class="form-group">
+                    <select name="singleSelect2" id="singleSelect2" class="form-control"
+                        ng-model="data2.selected" ng-options="item.nom + item.nom_producteur for item in data.models[data2.option] track by item.id" required>
+                    <option value="">--Sélectionner un signataire--</option>
+                    </select>
+                </fieldset>
 		<fieldset class="form-group">
-			<label for="typeProduit">Type de produit</label>
-			<input type="text" class="form-control" id="typeProduit" ng-model="produit.type">
+			<label for="date_debut">Début</label>
+			<input type="date" class="form-control" id="date_debut" ng-model="contrat.date_debut">
 		</fieldset>
 		<fieldset class="form-group">
-			<label for="libelle">Libellé</label>
-			<input type="text" class="form-control" id="libelle" ng-model="produit.libelle">
+			<label for="date_fin">Fin</label>
+			<input type="date" class="form-control" id="date_fin" ng-model="contrat.date_fin">
 		</fieldset>
 		<fieldset class="form-group">
 			<label for="saison">Saison</label>
-			<input type="text" class="form-control" id="saison" ng-model="produit.saison">
+			<input type="text" class="form-control" id="saison" ng-model="contrat.saison">
 		</fieldset>
 		<fieldset class="form-group">
-			<label for="methode_agro">Méthode agronomique</label>
-			<input type="text" class="form-control" id="methode_agro" ng-model="produit.methode_agronomique">
+			<label for="part_recolte">Part récolte</label>
+			<input type="text" class="form-control" id="part_recolte" ng-model="contrat.part_recolte">
+		</fieldset>
+                <fieldset class="form-group">
+			<label for="montant_part">Montant part</label>
+			<input type="text" class="form-control" id="montant_part" ng-model="contrat.montant_part">
 		</fieldset>
 		<button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
