@@ -15,6 +15,9 @@ class ContratType extends ApiType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('amap')
+            ->add('adherent')
+            ->add('producteur')
             ->add('date_debut')
             ->add('date_fin')
             ->add('saison')

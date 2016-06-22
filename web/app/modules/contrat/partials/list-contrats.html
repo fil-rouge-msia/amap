@@ -1,0 +1,39 @@
+<div class="action-header row">
+	<h2 class="col-md-11">Liste</h2>
+	<div class="actions col-md-1">
+		<a data-ui-sref="contrats.add_contrat" href class="btn btn-primary">Ajouter</a>
+	</div>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped">
+		<thead>
+			<th>Producteur</th>
+			<th>Adherent</th>
+			<th>Amap</th>
+			<th>Début</th>
+			<th>Fin</th>
+                        <th>Saison</th>
+                        <th>Part récolte</th>
+                        <th>Montant part</th>
+                        <th>Actions</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="contrat in contrats">
+	  			<td data-ng-bind="contrat.producteur.nom_producteur"></td>
+                                <td data-ng-bind="contrat.adherent.nom"></td>
+                                <td data-ng-bind="contrat.amap.nom"></td>
+                                <td data-ng-bind="contrat.date_debut"></td>
+                                <td data-ng-bind="contrat.date_fin"></td>
+                                <td data-ng-bind="contrat.saison"></td>
+                                <td data-ng-bind="contrat.part_recolte"></td>
+                                <td data-ng-bind="contrat.montant_part"></td>
+
+	  			<td>
+					<a data-ui-sref="contrats.edit({id:contrat.id})" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+					<a class="btn btn-danger" href ng-click ="delete(contrat)"><i class="glyphicon glyphicon-trash"></i></a>
+	  			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
